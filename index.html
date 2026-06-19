@@ -17,7 +17,7 @@
 
 <style>
 :root{
-  --base:#050B16;
+  --base:#030712;
   --surface:#0D1424;
   --surface-2:#111A2E;
   --line:rgba(148,163,184,.12);
@@ -56,7 +56,7 @@ img,svg{display:block;max-width:100%}
 header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s}
 header.scrolled{background:rgba(7,11,20,.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
-.logo-img{height:clamp(36px,3.6vw,48px);width:auto;display:block}
+.logo-img{height:clamp(40px,3.4vw,52px);width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:36px}
 .nav-links a{font-size:.94rem;color:var(--muted);font-weight:500;transition:.2s}
 .nav-links a:hover{color:var(--text)}
@@ -307,7 +307,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .feat-grid,.steps,.inc-grid,.foot-grid{grid-template-columns:1fr}
   .sec{padding:70px 0}.hero{padding:132px 0 56px}
   .stat-row3{grid-template-columns:1fr}
-  .toast{display:none}.tc{width:300px}.shot-card{width:300px}.tl{width:68px;height:68px}
+  .toast{display:none}.tc{width:300px}.shot-card{width:300px}.tl{width:68px;height:68px}.logo-img{height:28px}
   .dif,.inc,.cta{padding:36px 22px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
 }
@@ -398,41 +398,31 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <div class="tl"><img src="assets/gym-crack.webp" alt="Gym Crack"></div>
       <div class="tl"><img src="assets/gym-yu.webp" alt="YU GYM"></div>
       <div class="tl"><img src="assets/gym-cubi.webp" alt="GymCubi"></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
-      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-megahulk.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-martin.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-crack.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-yu.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-cubi.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-megahulk.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-martin.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-crack.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-yu.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-cubi.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-megahulk.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-martin.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-crack.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-yu.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-cubi.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-megahulk.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-martin.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-crack.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-yu.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-cubi.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-megahulk.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-martin.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-crack.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-yu.webp" alt="" aria-hidden="true"></div>
+      <div class="tl" aria-hidden="true"><img src="assets/gym-cubi.webp" alt="" aria-hidden="true"></div>
     </div>
   </div>
 </section>
