@@ -13,9 +13,8 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --base:#070B14;
@@ -31,7 +30,7 @@
   --muted:#9AA7BD;
   --muted-2:#64748B;
   --green:#22C55E;
-  --fd:'Clash Display','Space Grotesk',system-ui,sans-serif;
+  --fd:'Sora','Plus Jakarta Sans',system-ui,sans-serif;
   --fb:'Plus Jakarta Sans',system-ui,sans-serif;
   --r:18px;--r-sm:12px;--maxw:1200px;
 }
@@ -197,7 +196,11 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.7rem,6.6vw,5.6rem);li
 
 /* Testimonials */
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mtrack{display:flex;gap:22px;width:max-content;animation:scrollx 52s linear infinite}
+.mtrack{display:flex;gap:22px;width:max-content;align-items:center;animation:scrollx 52s linear infinite}
+.mtrack.lmt{animation-duration:30s}
+.mtrack.rmt{animation-duration:66s}
+.shot-card{margin:0;width:440px;flex:none;border-radius:16px;overflow:hidden;border:1px solid rgba(56,189,248,.18);box-shadow:0 0 26px rgba(56,189,248,.06),0 18px 42px rgba(2,6,18,.45)}
+.shot-card img{display:block;width:100%;height:auto}
 .marquee:hover .mtrack{animation-play-state:paused}
 .tc{width:380px;background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(56,189,248,.2);border-radius:var(--r);padding:28px;flex:none;display:flex;flex-direction:column;box-shadow:0 0 26px rgba(56,189,248,.07),0 18px 42px rgba(2,6,18,.45)}
 .tc p{color:var(--text);font-size:1rem;line-height:1.6;margin-bottom:20px}
@@ -211,7 +214,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.7rem,6.6vw,5.6rem);li
 .trust{padding:48px 0 6px}
 .trust-h{text-align:center;color:var(--muted-2);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px}
 .trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px}
-.tl{width:72px;height:72px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0b1220;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tl{width:96px;height:96px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0b1220;transition:transform .25s,border-color .25s,box-shadow .25s}
 .tl:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.4);box-shadow:0 0 22px rgba(56,189,248,.16)}
 .tl img{width:100%;height:100%;object-fit:cover;display:block}
 .review{max-width:760px;margin:0 auto;text-align:center;background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(56,189,248,.22);border-radius:22px;padding:48px 44px;position:relative;box-shadow:0 0 54px rgba(56,189,248,.09),0 26px 60px rgba(2,6,18,.5)}
@@ -293,7 +296,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .feat-grid,.steps,.inc-grid,.foot-grid{grid-template-columns:1fr}
   .sec{padding:70px 0}.hero{padding:132px 0 56px}
   .stat-row3{grid-template-columns:1fr}
-  .toast{display:none}.tc{width:300px}
+  .toast{display:none}.tc{width:300px}.shot-card{width:300px}.tl{width:84px;height:84px}
   .dif,.inc,.cta{padding:36px 22px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
 }
@@ -327,7 +330,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Plataforma para gimnasios · v.2026</span>
+    <span class="eyebrow"><span class="dot"></span>Software para gimnasios en México</span>
     <h1>El control de tu gimnasio,<br>aunque cobren <span class="grad">en efectivo</span></h1>
     <p class="sub">Accesos, membresías, cobros, monedero, fiado y productos — todo en un solo sistema. Sin obligar a tus socios a tener tarjeta o banco.</p>
     <div class="hero-actions">
@@ -368,12 +371,19 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 <section class="trust">
   <div class="wrap">
     <p class="trust-h">Gimnasios que ya operan con Gymvexa</p>
-    <div class="trust-logos reveal">
+  </div>
+  <div class="marquee">
+    <div class="mtrack lmt">
       <div class="tl"><img src="assets/gym-megahulk.webp" alt="Megahulk Gym"></div>
       <div class="tl"><img src="assets/gym-martin.webp" alt="Gym Martin"></div>
       <div class="tl"><img src="assets/gym-crack.webp" alt="Gym Crack"></div>
       <div class="tl"><img src="assets/gym-yu.webp" alt="YU GYM"></div>
       <div class="tl"><img src="assets/gym-cubi.webp" alt="GymCubi"></div>
+      <div class="tl"><img src="assets/gym-megahulk.webp" alt=""></div>
+      <div class="tl"><img src="assets/gym-martin.webp" alt=""></div>
+      <div class="tl"><img src="assets/gym-crack.webp" alt=""></div>
+      <div class="tl"><img src="assets/gym-yu.webp" alt=""></div>
+      <div class="tl"><img src="assets/gym-cubi.webp" alt=""></div>
     </div>
   </div>
 </section>
@@ -470,15 +480,15 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     </div>
   </div>
   <div class="marquee">
-    <div class="mtrack">
-      <div class="tc"><p>“Me ofrecieron probar este sistema y debo admitir que esto me ha ayudado mucho porque a veces no estoy en el gimnasio o mi ayudante se va pronto, y esto ha automatizado para que mis clientes se registren, compren y paguen sin necesidad de que yo esté presente.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-megahulk.webp" alt="Megahulk Gym"></span><div><div class="nm">Megahulk Gym</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Este es el primer mes que lo uso y me gusta porque así puedo dejar solo el gym y ocuparme de otras tareas pendientes o ayudar a los muchachos con sus rutinas.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-martin.webp" alt="GYM MARTIN"></span><div><div class="nm">GYM MARTIN</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Hasta he vendido más productos porque el monedero digital les gusta: algunos recargan de $200 a $400 y ellos mismos renuevan su cuenta sin que yo esté presente. Yo solo llego y reviso los movimientos. La verdad me sorprendió, y ahora mis clientes están encantados.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-crack.webp" alt="Gym Crack"></span><div><div class="nm">Gym Crack</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Este servicio me lo recomendó un amigo que también tiene gimnasio. La verdad soy malo para llevar las cuentas porque ya llevo otro negocio, así que esto me ha ayudado mucho. Gracias, compa Edy.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-yu.webp" alt="Héctor Díaz López"></span><div><div class="nm">Héctor Díaz López</div><div class="ro">YU GYM</div></div></div></div>
-      <div class="tc"><p>“Me ofrecieron probar este sistema y debo admitir que esto me ha ayudado mucho porque a veces no estoy en el gimnasio o mi ayudante se va pronto, y esto ha automatizado para que mis clientes se registren, compren y paguen sin necesidad de que yo esté presente.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-megahulk.webp" alt="Megahulk Gym"></span><div><div class="nm">Megahulk Gym</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Este es el primer mes que lo uso y me gusta porque así puedo dejar solo el gym y ocuparme de otras tareas pendientes o ayudar a los muchachos con sus rutinas.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-martin.webp" alt="GYM MARTIN"></span><div><div class="nm">GYM MARTIN</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Hasta he vendido más productos porque el monedero digital les gusta: algunos recargan de $200 a $400 y ellos mismos renuevan su cuenta sin que yo esté presente. Yo solo llego y reviso los movimientos. La verdad me sorprendió, y ahora mis clientes están encantados.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-crack.webp" alt="Gym Crack"></span><div><div class="nm">Gym Crack</div><div class="ro">Cliente Gymvexa</div></div></div></div>
-      <div class="tc"><p>“Este servicio me lo recomendó un amigo que también tiene gimnasio. La verdad soy malo para llevar las cuentas porque ya llevo otro negocio, así que esto me ha ayudado mucho. Gracias, compa Edy.”</p><div class="tw"><span class="gym-logo"><img src="assets/gym-yu.webp" alt="Héctor Díaz López"></span><div><div class="nm">Héctor Díaz López</div><div class="ro">YU GYM</div></div></div></div>
+    <div class="mtrack rmt">
+      <figure class="shot-card"><img src="assets/rev-megahulk.webp" alt="Reseña de Megahulk Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-martin.webp" alt="Reseña de GYM MARTIN" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-crack.webp" alt="Reseña de Gym Crack" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-yu.webp" alt="Reseña de YU GYM" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-megahulk.webp" alt="" aria-hidden="true" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-martin.webp" alt="" aria-hidden="true" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-crack.webp" alt="" aria-hidden="true" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-yu.webp" alt="" aria-hidden="true" loading="lazy"></figure>
     </div>
   </div>
 </section>
