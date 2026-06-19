@@ -31,10 +31,11 @@
   --green:#22C55E;
   --fd:'Space Grotesk',system-ui,sans-serif;
   --fb:'Plus Jakarta Sans',system-ui,sans-serif;
-  --r:18px;--r-sm:12px;--maxw:1180px;
+  --r:18px;--r-sm:12px;--maxw:1200px;
 }
+@property --gx{syntax:"<angle>";initial-value:0deg;inherits:false}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:92px;overflow-x:hidden}
 body{font-family:var(--fb);background:var(--base);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
@@ -43,16 +44,16 @@ img,svg{display:block;max-width:100%}
 /* Background */
 .bg{position:fixed;inset:0;z-index:-1;background:var(--base);overflow:hidden}
 .bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% -5%,#000 35%,transparent 78%);mask-image:radial-gradient(ellipse 90% 55% at 50% -5%,#000 35%,transparent 78%);opacity:.55}
-.aurora{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;will-change:transform}
+.aurora{position:absolute;border-radius:50%;filter:blur(100px);opacity:.6;will-change:transform}
 .a1{width:620px;height:620px;background:radial-gradient(circle,#2563EB,transparent 68%);top:-220px;left:-140px;animation:drift1 22s ease-in-out infinite}
 .a2{width:520px;height:520px;background:radial-gradient(circle,#38BDF8,transparent 66%);top:-120px;right:-120px;animation:drift2 26s ease-in-out infinite}
-.a3{width:640px;height:640px;background:radial-gradient(circle,#1E40AF,transparent 70%);top:1500px;left:35%;opacity:.3;animation:drift1 30s ease-in-out infinite}
+.a3{width:640px;height:640px;background:radial-gradient(circle,#1E40AF,transparent 70%);top:1500px;left:35%;opacity:.42;animation:drift1 30s ease-in-out infinite}
 @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
 @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,50px)}}
 
 /* Nav */
 header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s}
-header.scrolled{background:rgba(7,11,20,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+header.scrolled{background:rgba(7,11,20,.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo-img{height:40px;width:auto}
 .nav-links{display:flex;align-items:center;gap:36px}
@@ -69,11 +70,13 @@ header.scrolled{background:rgba(7,11,20,.7);backdrop-filter:blur(18px);-webkit-b
 .menu-btn svg{width:28px;height:28px}
 
 /* Hero */
-.hero{padding:170px 0 90px;text-align:center}
+.hero{padding:170px 0 90px;text-align:center;position:relative}
+.hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:1000px;height:680px;max-width:120vw;background:radial-gradient(ellipse at center,rgba(56,189,248,.16),rgba(37,99,235,.06) 40%,transparent 65%);pointer-events:none;z-index:0}
 .hero .wrap{position:relative;z-index:2}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.05em;color:var(--cyan-2);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.22);padding:8px 16px;border-radius:100px;margin-bottom:30px}
 .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
-h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);line-height:1.03;letter-spacing:-.04em;margin-bottom:26px}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.7rem,6.6vw,5.6rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:26px}
+.ac{font-style:italic;background:linear-gradient(115deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.05em}
 .grad{background:linear-gradient(115deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{font-size:clamp(1.06rem,2vw,1.3rem);color:var(--muted);max-width:660px;margin:0 auto 38px;line-height:1.6}
 .hero-actions{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
@@ -85,6 +88,10 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 .pay-row{display:flex;align-items:center;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:34px}
 .pay-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:9px;padding:7px 13px;color:var(--muted);font-size:.83rem;font-weight:500}
 .pay-pill svg{width:15px;height:15px;color:var(--cyan)}
+.hero-shot{margin:66px auto 0;max-width:1060px;position:relative;z-index:2;animation:floaty 7s ease-in-out infinite}
+.shot-frame{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(56,189,248,.28);box-shadow:0 50px 130px rgba(2,6,18,.75),0 0 70px rgba(56,189,248,.14);background:#0D1424;isolation:isolate}
+.shot-frame img{display:block;width:100%;height:auto}
+.shot-frame::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:conic-gradient(from var(--gx),rgba(56,189,248,0) 0deg,rgba(56,189,248,0) 230deg,rgba(56,189,248,.7) 310deg,#e3f5fe 335deg,rgba(56,189,248,.7) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:gxspin 6s linear infinite;pointer-events:none;z-index:3}
 
 /* Product mock */
 .mock{margin:62px auto 0;max-width:920px;position:relative;z-index:2;animation:floaty 7s ease-in-out infinite}
@@ -124,7 +131,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 /* Stats band */
 .stats{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.stat-b .n{font-family:var(--fd);font-weight:700;font-size:clamp(2.2rem,4vw,3rem);letter-spacing:-.03em;background:linear-gradient(120deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-b .n{font-family:var(--fd);font-weight:700;font-size:clamp(2.2rem,4vw,3rem);letter-spacing:-.03em;background:linear-gradient(120deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(56,189,248,.4))}
 .stat-b .l{color:var(--muted);font-size:.95rem;margin-top:6px}
 
 /* Sections */
@@ -132,24 +139,27 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 .sec-head{text-align:center;max-width:680px;margin:0 auto 60px}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
 .kicker::before{content:"";width:22px;height:1px;background:var(--cyan);opacity:.6}
-.sec-head h2{font-family:var(--fd);font-weight:700;font-size:clamp(2rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:18px}
+.sec-head h2{font-family:var(--fd);font-weight:700;font-size:clamp(2.1rem,4.5vw,3.4rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}
 .sec-head p{color:var(--muted);font-size:1.08rem}
 
 /* Features */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
-.card::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);pointer-events:none}
-.card::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:.3s;background:radial-gradient(420px circle at var(--cx,50%) var(--cy,0%),rgba(56,189,248,.1),transparent 70%);pointer-events:none}
-.card:hover{transform:translateY(-6px);border-color:rgba(56,189,248,.4);box-shadow:0 22px 54px rgba(2,6,18,.5)}
+.card{background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(148,163,184,.14);border-radius:var(--r);padding:30px;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;isolation:isolate}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--gx),rgba(56,189,248,0) 0deg,rgba(56,189,248,0) 210deg,rgba(56,189,248,.9) 300deg,#e3f5fe 332deg,rgba(56,189,248,.9) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:gxspin 5.5s linear infinite;opacity:.6;transition:opacity .35s;pointer-events:none}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:.35s;background:radial-gradient(380px circle at var(--cx,50%) var(--cy,25%),rgba(56,189,248,.2),transparent 60%);pointer-events:none}
+.card:hover{transform:translateY(-7px);box-shadow:0 26px 64px rgba(2,6,18,.6),0 0 34px rgba(56,189,248,.13)}
+.card:hover::before{opacity:1}
 .card:hover::after{opacity:1}
-.ic-box{width:54px;height:54px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:grid;place-items:center;color:var(--cyan);margin-bottom:22px}
+@keyframes gxspin{to{--gx:360deg}}
+.ic-box{width:54px;height:54px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);display:grid;place-items:center;color:var(--cyan);margin-bottom:22px;box-shadow:0 0 22px rgba(56,189,248,.18),inset 0 0 12px rgba(56,189,248,.1)}
 .ic-box svg{width:26px;height:26px}
 .card h3{font-family:var(--fd);font-weight:600;font-size:1.2rem;margin-bottom:11px;letter-spacing:-.01em}
 .card p{color:var(--muted);font-size:.96rem}
 
 /* Steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step{position:relative;padding:30px 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.step{position:relative;padding:30px 24px;background:linear-gradient(180deg,#131D33,#0E1729);border:1px solid rgba(148,163,184,.14);border-radius:var(--r);transition:transform .25s,box-shadow .25s,border-color .25s}
+.step:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.35);box-shadow:0 18px 40px rgba(2,6,18,.45)}
 .step .num{font-family:var(--fd);font-weight:700;font-size:1.05rem;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;margin-bottom:18px;box-shadow:0 8px 20px rgba(37,99,235,.4)}
 .step h4{font-family:var(--fd);font-weight:600;font-size:1.08rem;margin-bottom:9px}
 .step p{color:var(--muted);font-size:.92rem}
@@ -158,7 +168,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 .dif{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.05));border:1px solid var(--line-2);border-radius:26px;padding:60px;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
 .dif::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%);top:-130px;right:-90px;filter:blur(40px)}
 .dif-txt{position:relative;z-index:2}
-.dif-txt h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.12;letter-spacing:-.03em;margin-bottom:20px}
+.dif-txt h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.9rem,3.8vw,2.95rem);line-height:1.12;letter-spacing:-.03em;margin-bottom:20px}
 .dif-txt p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
 .dif-list{position:relative;z-index:2;display:flex;flex-direction:column;gap:13px}
 .dif-item{display:flex;gap:14px;align-items:flex-start;background:rgba(7,11,20,.45);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
@@ -170,7 +180,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 /* Incluye */
 .inc{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:56px}
 .inc-top{text-align:center;max-width:620px;margin:0 auto 40px}
-.inc-top h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.03em;margin-bottom:14px}
+.inc-top h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.9rem,3.8vw,2.95rem);letter-spacing:-.03em;margin-bottom:14px}
 .inc-top p{color:var(--muted);font-size:1.05rem}
 .inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;max-width:820px;margin:0 auto 40px}
 .inc-item{display:flex;gap:12px;align-items:center;font-size:1rem;color:var(--text);padding:6px 0}
@@ -181,19 +191,27 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);li
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mtrack{display:flex;gap:22px;width:max-content;animation:scrollx 40s linear infinite}
 .marquee:hover .mtrack{animation-play-state:paused}
-.tc{width:380px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;flex:none}
+.tc{width:380px;background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(56,189,248,.2);border-radius:var(--r);padding:28px;flex:none;box-shadow:0 0 26px rgba(56,189,248,.07),0 18px 42px rgba(2,6,18,.45)}
 .tc p{color:var(--text);font-size:1rem;line-height:1.6;margin-bottom:20px}
 .tw{display:flex;align-items:center;gap:13px}
 .tw .av{width:40px;height:40px;font-size:.88rem}
 .tw .nm{font-family:var(--fd);font-weight:600;font-size:.95rem}
 .tw .ro{color:var(--muted-2);font-size:.82rem}
 @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 11px))}}
+.review{max-width:760px;margin:0 auto;text-align:center;background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(56,189,248,.22);border-radius:22px;padding:48px 44px;position:relative;box-shadow:0 0 54px rgba(56,189,248,.09),0 26px 60px rgba(2,6,18,.5)}
+.review .quote{width:42px;height:42px;color:var(--cyan);opacity:.5;margin:0 auto 18px}
+.review blockquote{font-family:var(--fd);font-weight:500;font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.5;letter-spacing:-.01em;color:var(--text);margin:0 0 28px}
+.rev-who{display:flex;align-items:center;justify-content:center;gap:14px}
+.rev-logo{width:56px;height:56px;border-radius:50%;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 20px rgba(250,204,0,.2)}
+.rev-meta{text-align:left}
+.rev-meta b{font-family:var(--fd);font-weight:600;font-size:1.04rem;display:block;color:var(--text)}
+.rev-meta span{color:var(--muted-2);font-size:.86rem}
 
 /* CTA */
 .cta{text-align:center;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(56,189,248,.09));border:1px solid var(--line-2);border-radius:28px;padding:74px 40px;position:relative;overflow:hidden}
 .cta::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.14),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%)}
 .cta .in{position:relative;z-index:2}
-.cta h2{font-family:var(--fd);font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
+.cta h2{font-family:var(--fd);font-weight:700;font-size:clamp(2.2rem,4.8vw,3.7rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
 .cta p{color:var(--muted);font-size:1.1rem;margin-bottom:34px;max-width:520px;margin-inline:auto}
 
 /* Footer */
@@ -213,6 +231,20 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 /* WhatsApp */
 .wa{position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 26px rgba(37,211,102,.45);transition:transform .2s}
 .wa:hover{transform:scale(1.08)}.wa svg{width:30px;height:30px}
+
+/* FAQ */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s}
+.faq[open]{border-color:rgba(56,189,248,.3)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;font-family:var(--fd);font-weight:600;font-size:1.05rem;display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--text)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{width:22px;height:22px;flex:none;position:relative}
+.faq summary .pl::before,.faq summary .pl::after{content:"";position:absolute;background:var(--cyan);border-radius:2px}
+.faq summary .pl::before{top:10px;left:3px;right:3px;height:2px}
+.faq summary .pl::after{left:10px;top:3px;bottom:3px;width:2px;transition:transform .3s}
+.faq[open] summary .pl::after{transform:scaleY(0)}
+.faq[open] summary{color:var(--cyan-2)}
+.faq .fa{padding:0 24px 22px;color:var(--muted);font-size:.97rem;line-height:1.62;margin:0}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
@@ -260,12 +292,13 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <a href="#caracteristicas">Características</a>
       <a href="#como">Cómo funciona</a>
       <a href="#incluye">Qué incluye</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-cta">
       <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
       <a href="#" class="btn btn-ghost">Iniciar sesión</a>
-      <a href="#" class="btn btn-primary">Comenzar gratis</a>
+      <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
       <button class="menu-btn" id="menuBtn" aria-label="Menú">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
@@ -281,7 +314,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     <p class="sub">Accesos, membresías, cobros, monedero, fiado y productos — todo en un solo sistema. Sin obligar a tus socios a tener tarjeta o banco.</p>
     <div class="hero-actions">
       <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
-      <a href="#" class="btn btn-primary">Comenzar gratis</a>
+      <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
       <a href="#como" class="btn btn-ghost">Ver cómo funciona</a>
     </div>
     <p class="micro">Crea tu cuenta y explora el panel por dentro. <b>Sin tarjeta para empezar.</b></p>
@@ -293,35 +326,9 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <span class="pay-pill">Monedero</span>
     </div>
 
-    <div class="mock">
-      <div class="window">
-        <div class="win-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.gymvexa.com</span></div>
-        <div class="win-body">
-          <aside class="win-side">
-            <div class="si on"><i></i>Resumen</div>
-            <div class="si"><i></i>Socios</div>
-            <div class="si"><i></i>Accesos</div>
-            <div class="si"><i></i>Ventas</div>
-            <div class="si"><i></i>Caja</div>
-            <div class="si"><i></i>Inventario</div>
-          </aside>
-          <main class="win-main">
-            <div class="stat-row3">
-              <div class="s3"><div class="k">Socios activos</div><div class="v cy">248</div></div>
-              <div class="s3"><div class="k">Ingresos hoy</div><div class="v gr">$8,420</div></div>
-              <div class="s3"><div class="k">Accesos hoy</div><div class="v">163</div></div>
-            </div>
-            <div class="mlist">
-              <div class="mrow"><span class="av">JP</span><div><div class="nm">Juan Pérez</div><div class="meta">Plan mensual · entró 7:42</div></div><span class="chip ok">Activo</span></div>
-              <div class="mrow"><span class="av">MR</span><div><div class="nm">María Ríos</div><div class="meta">Plan estudiante</div></div><span class="chip warn">Por vencer</span></div>
-              <div class="mrow"><span class="av">LG</span><div><div class="nm">Luis García</div><div class="meta">Fiado: $80</div></div><span class="chip due">Adeudo</span></div>
-            </div>
-          </main>
-        </div>
-      </div>
-      <div class="toast">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <div><div class="tt">Acceso permitido</div><div class="ts">Membresía al corriente</div></div>
+    <div class="hero-shot reveal">
+      <div class="shot-frame">
+        <img src="assets/dashboard.webp" alt="Panel de Gymvexa: socios, accesos, ventas y caja en tiempo real" width="1500" height="938" loading="lazy">
       </div>
     </div>
   </div>
@@ -344,7 +351,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">Todo en un sistema</div>
-      <h2>Lo que tu gimnasio necesita, sin complicaciones</h2>
+      <h2>Lo que tu gimnasio necesita, <span class="ac">sin complicaciones</span></h2>
       <p>Pensado para gimnasios reales: efectivo, fiado, recepción y socios sin banco. Cada función la prendes o apagas según tu gym.</p>
     </div>
     <div class="feat-grid">
@@ -363,7 +370,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">Empieza en minutos</div>
-      <h2>Pruébalo antes de pagar</h2>
+      <h2>Pruébalo antes de <span class="ac">pagar</span></h2>
       <p>Crea tu cuenta gratis, explora todo lo que incluye por dentro y actívalo cuando estés listo.</p>
     </div>
     <div class="steps">
@@ -380,7 +387,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   <div class="wrap">
     <div class="dif reveal">
       <div class="dif-txt">
-        <h2>El software de gimnasio pensado para México</h2>
+        <h2>El software de gimnasio pensado para <span class="ac">México</span></h2>
         <p>Los sistemas grandes asumen que todos tus clientes tienen tarjeta y banco. La realidad de un gimnasio local es otra: efectivo, fiado, recepción manual y socios sin cuenta bancaria.</p>
         <p>Gymvexa abraza esa realidad en lugar de pelearse con ella — y la convierte en control total.</p>
       </div>
@@ -400,7 +407,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     <div class="inc reveal">
       <div class="inc-top">
         <div class="kicker" style="justify-content:center">Todo incluido</div>
-        <h2>Un solo sistema. Sin comisión por socio.</h2>
+        <h2>Un solo sistema. <span class="ac">Sin comisión</span> por socio.</h2>
         <p>El dinero de tus clientes es tuyo y llega directo a tu cuenta. Tú solo pagas por usar Gymvexa.</p>
       </div>
       <div class="inc-grid">
@@ -415,7 +422,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       </div>
       <div class="inc-cta">
         <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
-        <a href="#" class="btn btn-primary">Crear cuenta y verlo por dentro</a>
+        <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Crear cuenta y verlo por dentro</a>
       </div>
     </div>
   </div>
@@ -425,18 +432,35 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 <section class="sec" id="testimonios">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker" style="justify-content:center">Lo que dicen</div>
-      <h2>Dueños que ya tomaron el control</h2>
+      <div class="kicker" style="justify-content:center">Reseña real</div>
+      <h2>Lo que dicen quienes ya lo <span class="ac">usan</span></h2>
     </div>
+    <figure class="review reveal">
+      <svg class="quote" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 5C6.5 5 4 7.6 4 10.7V19h7.5v-8.3H7.7C7.7 9 8.6 7.9 9.6 7.7V5zm9.4 0c-3.1 0-5.6 2.6-5.6 5.7V19H21v-8.3h-3.8c0-1.7.9-2.8 1.9-3V5z"/></svg>
+      <blockquote>Me ofrecieron probar este sistema y debo admitir que esto me ha ayudado mucho porque a veces no estoy en el gimnasio o mi ayudante se va pronto, y esto ha automatizado para que mis clientes se registren, compren y paguen sin necesidad de que yo esté presente.</blockquote>
+      <figcaption class="rev-who">
+        <img src="assets/megahulk.png" alt="Megahulk Gym" class="rev-logo">
+        <span class="rev-meta"><b>Megahulk Gym</b><span>Gimnasio en México · Cliente Gymvexa</span></span>
+      </figcaption>
+    </figure>
   </div>
-  <!-- TESTIMONIOS: reemplazar por reales cuando estén disponibles -->
-  <div class="marquee">
-    <div class="mtrack">
-      <div class="tc"><p>“Antes la recepción era un agujero de dinero. Ahora veo cada venta con su hora y se acabaron las fugas.”</p><div class="tw"><span class="av">CR</span><div><div class="nm">Carlos R.</div><div class="ro">Dueño · Iron House Gym</div></div></div></div>
-      <div class="tc"><p>“Mis socios recargan saldo en efectivo y compran solos. Bajé el trabajo de mostrador a la mitad.”</p><div class="tw"><span class="av">AM</span><div><div class="nm">Ana M.</div><div class="ro">Dueña · Studio Fit</div></div></div></div>
-      <div class="tc"><p>“El cierre de caja me dice exactamente cuánto debió entrar. Por fin duermo tranquilo.”</p><div class="tw"><span class="av">JL</span><div><div class="nm">Jorge L.</div><div class="ro">Dueño · PowerZone</div></div></div></div>
-      <div class="tc"><p>“El fiado ya no es un caos. Tope, registro y todo claro. Justo lo que necesitaba.”</p><div class="tw"><span class="av">DT</span><div><div class="nm">Diana T.</div><div class="ro">Dueña · Box Central</div></div></div></div>
-      <div class="tc"><p>“Lo instalé sin saber de tecnología. En una tarde ya estaba cobrando con el sistema.”</p><div class="tw"><span class="av">RH</span><div><div class="nm">Raúl H.</div><div class="ro">Dueño · Atlas Gym</div></div></div></div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" style="justify-content:center">Preguntas frecuentes</div>
+      <h2>¿Tienes <span class="ac">dudas</span>?</h2>
+      <p>Lo que más nos preguntan los dueños de gimnasios antes de empezar.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal"><summary>¿Mis clientes necesitan tarjeta o banco?<span class="pl"></span></summary><p class="fa">No. Gymvexa funciona con efectivo, OXXO, transferencia, tarjeta o monedero digital. Tus socios pagan como prefieran, sin obligarlos a tener cuenta bancaria.</p></details>
+      <details class="faq reveal"><summary>¿Cómo entran mis socios al gimnasio?<span class="pl"></span></summary><p class="fa">Por QR, PIN o tarjeta. Si su membresía está al corriente, el acceso se permite; si está vencida, no. Cada entrada queda registrada con su hora.</p></details>
+      <details class="faq reveal"><summary>¿Puedo probarlo antes de pagar?<span class="pl"></span></summary><p class="fa">Sí. Creas tu cuenta gratis, exploras todo el panel por dentro y lo activas con un pago seguro por Stripe solo cuando estés listo.</p></details>
+      <details class="faq reveal"><summary>¿Cobran comisión por cada socio?<span class="pl"></span></summary><p class="fa">No. Pagas una sola cuota por usar Gymvexa. El dinero que cobras a tus clientes llega directo a tu cuenta, sin que toquemos un peso.</p></details>
+      <details class="faq reveal"><summary>¿Qué pasa con el fiado de mis socios?<span class="pl"></span></summary><p class="fa">Tú defines un tope de fiado. Sabes quién debe, cuánto y desde cuándo, y la deuda no se borra aunque el socio cancele su membresía.</p></details>
+      <details class="faq reveal"><summary>¿Necesito saber de tecnología para usarlo?<span class="pl"></span></summary><p class="fa">No. Está pensado para que lo uses desde el primer día, sin instalaciones complicadas. Y si te atoras, te damos soporte.</p></details>
     </div>
   </div>
 </section>
@@ -446,12 +470,12 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   <div class="wrap">
     <div class="cta reveal">
       <div class="in">
-        <h2>Toma el control de tu gimnasio hoy</h2>
+        <h2>Toma el control de tu <span class="ac">gimnasio</span> hoy</h2>
         <p>Crea tu cuenta gratis y mira por dentro cómo Gymvexa ordena tus accesos, cobros y socios en un solo lugar.</p>
         <div class="hero-actions" style="margin-bottom:0">
           <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
-          <a href="#" class="btn btn-primary">Comenzar gratis</a>
-          <a href="https://wa.me/52XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Gymvexa" target="_blank" class="btn btn-ghost">Hablar con ventas</a>
+          <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
+          <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Gymvexa" target="_blank" class="btn btn-ghost">Hablar con ventas</a>
         </div>
       </div>
     </div>
@@ -480,8 +504,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       </div>
       <div class="foot-col">
         <h5>Contacto</h5>
-        <a href="https://wa.me/52XXXXXXXXXX" target="_blank">WhatsApp</a>
-        <a href="mailto:hola@gymvexa.com">hola@gymvexa.com</a>
+        <a href="https://wa.me/5212361112213" target="_blank">WhatsApp</a>
+        <a href="mailto:gymvexa@gmail.com">gymvexa@gmail.com</a>
         <a href="#">Tehuacán, Puebla, MX</a>
       </div>
     </div>
@@ -496,41 +520,91 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   </div>
 </footer>
 
-<!-- WhatsApp: reemplazar 52XXXXXXXXXX por el número real -->
-<a class="wa" href="https://wa.me/52XXXXXXXXXX?text=Hola%2C%20me%20interesa%20Gymvexa" target="_blank" aria-label="WhatsApp">
+<!-- WhatsApp: reemplazar 5212361112213 por el número real -->
+<a class="wa" href="https://wa.me/5212361112213?text=Hola%2C%20me%20interesa%20Gymvexa" target="_blank" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.535 5.874L0 24l6.29-1.508A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 01-5.058-1.4l-.361-.214-3.735.896.944-3.653-.235-.374A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
 </a>
 
 <script>
-const hdr=document.getElementById('hdr');
-addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20));
-const mb=document.getElementById('menuBtn'),nm=document.getElementById('navMenu');
-mb.addEventListener('click',()=>nm.classList.toggle('open'));
-nm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nm.classList.remove('open')));
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--cx',(e.clientX-r.left)+'px');c.style.setProperty('--cy',(e.clientY-r.top)+'px')}));
-const cio=new IntersectionObserver((es)=>es.forEach(e=>{
-  if(!e.isIntersecting)return; cio.unobserve(e.target);
-  const el=e.target, end=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
-  let t0=null; const dur=1100;
-  const tick=(t)=>{if(!t0)t0=t;const p=Math.min((t-t0)/dur,1);el.textContent=pre+Math.round(p*end)+suf;if(p<1)requestAnimationFrame(tick)};
-  requestAnimationFrame(tick);
-},{threshold:.5});
-document.querySelectorAll('.n[data-count]').forEach(el=>cio.observe(el));
-// Dynamic cursor interactions (Jerome-style) — solo desktop, respeta reduce-motion
-const fine=matchMedia('(pointer:fine)').matches, calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-if(fine&&!calm){
-  document.querySelectorAll('.btn-primary').forEach(b=>{
-    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.18}px,${y*.32-2}px)`});
-    b.addEventListener('mouseleave',()=>{b.style.transform=''});
-  });
-  const win=document.querySelector('.window'), hero=document.querySelector('.hero');
-  if(win&&hero){
-    hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;win.style.transform=`perspective(1200px) rotateY(${px*5}deg) rotateX(${-py*4}deg)`});
-    hero.addEventListener('mouseleave',()=>{win.style.transform=''});
+/* Esencial: navbar solida + menu movil + reveal */
+(function(){
+  var hdr=document.getElementById('hdr');
+  function onScroll(){ if(window.scrollY>20){hdr.classList.add('scrolled');}else{hdr.classList.remove('scrolled');} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  var mb=document.getElementById('menuBtn'), nm=document.getElementById('navMenu');
+  if(mb&&nm){
+    mb.addEventListener('click',function(){ nm.classList.toggle('open'); });
+    nm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ nm.classList.remove('open'); }); });
   }
-}
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:0.14});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+<script>
+/* Mejoras (si fallan, no afectan lo esencial de arriba) */
+(function(){
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('mousemove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--cx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--cy',(e.clientY-r.top)+'px');
+    });
+  });
+
+  if('IntersectionObserver' in window){
+    var cio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting){ return; }
+        cio.unobserve(en.target);
+        var el=en.target;
+        var end=parseInt(el.getAttribute('data-count'),10)||0;
+        var pre=el.getAttribute('data-prefix')||'';
+        var suf=el.getAttribute('data-suffix')||'';
+        var start=null, dur=1100;
+        function step(ts){
+          if(!start){ start=ts; }
+          var prog=Math.min((ts-start)/dur,1);
+          el.textContent=pre+Math.round(prog*end)+suf;
+          if(prog<1){ requestAnimationFrame(step); }
+        }
+        requestAnimationFrame(step);
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('.n[data-count]').forEach(function(el){ cio.observe(el); });
+  }
+
+  var fine=window.matchMedia('(pointer:fine)').matches;
+  var calm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(fine && !calm){
+    document.querySelectorAll('.btn-primary').forEach(function(b){
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        var x=e.clientX-r.left-r.width/2;
+        var y=e.clientY-r.top-r.height/2;
+        b.style.transform='translate('+(x*0.18)+'px,'+(y*0.32-2)+'px)';
+      });
+      b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+    });
+    var win=document.querySelector('.window'), hero=document.querySelector('.hero');
+    if(win && hero){
+      hero.addEventListener('mousemove',function(e){
+        var r=hero.getBoundingClientRect();
+        var px=(e.clientX-r.left)/r.width-0.5;
+        var py=(e.clientY-r.top)/r.height-0.5;
+        win.style.transform='perspective(1200px) rotateY('+(px*5)+'deg) rotateX('+((-py)*4)+'deg)';
+      });
+      hero.addEventListener('mouseleave',function(){ win.style.transform=''; });
+    }
+  }
+})();
 </script>
 </body>
 </html>
