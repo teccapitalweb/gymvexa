@@ -56,7 +56,7 @@ img,svg{display:block;max-width:100%}
 header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;background:rgba(3,7,18,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.08)}
 header.scrolled{background:rgba(3,7,18,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.14)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo-img{height:clamp(32px,2.7vw,38px);width:auto;display:block}
+.logo-img{height:clamp(34px,2.9vw,40px);width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:36px}
 .nav-links a{font-size:.94rem;color:#CBD5E1;font-weight:500;transition:color .2s;position:relative}
 .nav-links a:hover{color:var(--cyan-2)}
@@ -203,11 +203,11 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 
 /* Testimonials */
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mtrack{display:flex;gap:22px;width:max-content;align-items:center;animation:scrollx 52s linear infinite}
-.mtrack.lmt{animation-duration:34s}
+.mtrack{display:flex;gap:30px;width:max-content;align-items:center;animation:scrollx 52s linear infinite}
+.mtrack.lmt{animation-duration:40s}
 .mtrack.rmt{animation-duration:66s}
-.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1000px;margin:0 auto}
-.shot-card{margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,.2);box-shadow:0 0 26px rgba(56,189,248,.06),0 18px 42px rgba(2,6,18,.45);transition:transform .25s,border-color .25s,box-shadow .25s}
+.tgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;max-width:1200px;margin:0 auto}
+.shot-card{flex:0 1 360px;max-width:100%;margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,.2);box-shadow:0 0 26px rgba(56,189,248,.06),0 18px 42px rgba(2,6,18,.45);transition:transform .25s,border-color .25s,box-shadow .25s}
 .shot-card:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.45);box-shadow:0 0 34px rgba(56,189,248,.16),0 22px 50px rgba(2,6,18,.5)}
 .shot-card img{display:block;width:100%;height:auto}
 .marquee:hover .mtrack{animation-play-state:paused}
@@ -219,7 +219,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 .tw .ro{color:var(--muted-2);font-size:.82rem}
 .tw .gym-logo{width:46px;height:46px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.14);flex:none;background:#0b1220}
 .tw .gym-logo img{width:100%;height:100%;object-fit:cover;display:block}
-@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 11px))}}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 15px))}}
 .trust{padding:48px 0 6px}
 .trust-h{text-align:center;color:var(--muted-2);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
 .trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px}
@@ -307,7 +307,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 @media(max-width:760px){
   .stats-grid{grid-template-columns:repeat(2,1fr);gap:32px 16px;padding:32px 16px}
   .stat-b+.stat-b::before{display:none}
-  .tgrid{grid-template-columns:1fr;max-width:440px}
+  .tgrid{max-width:440px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%;justify-content:center}
 }
