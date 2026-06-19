@@ -56,7 +56,7 @@ img,svg{display:block;max-width:100%}
 header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;background:rgba(3,7,18,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.08)}
 header.scrolled{background:rgba(3,7,18,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.14)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo-img{height:clamp(31px,2.6vw,38px);width:auto;display:block}
+.logo-img{height:clamp(32px,2.7vw,38px);width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:36px}
 .nav-links a{font-size:.94rem;color:#CBD5E1;font-weight:500;transition:color .2s;position:relative}
 .nav-links a:hover{color:var(--cyan-2)}
@@ -159,8 +159,8 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 @keyframes gxspin{to{--gx:360deg}}
 .ic-box{width:54px;height:54px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);display:grid;place-items:center;color:var(--cyan);margin-bottom:22px;box-shadow:0 0 22px rgba(56,189,248,.18),inset 0 0 12px rgba(56,189,248,.1)}
 .ic-box svg{width:26px;height:26px}
-.card h3{font-family:var(--fd);font-weight:600;font-size:1.2rem;margin-bottom:11px;letter-spacing:-.01em}
-.card p{color:var(--muted);font-size:.96rem}
+.card h3{font-family:var(--fd);font-weight:700;font-size:1.2rem;margin-bottom:11px;letter-spacing:-.01em;color:#fff}
+.card p{color:#aab6c9;font-size:.96rem;line-height:1.6}
 
 /* Steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -173,12 +173,14 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 .step p{color:var(--muted);font-size:.92rem}
 
 /* Diferenciador */
-.dif{background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(56,189,248,.06));border:1px solid var(--line-2);border-radius:26px;padding:60px;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;position:relative;overflow:hidden;isolation:isolate}
+.dif{background:linear-gradient(135deg,rgba(37,99,235,.17),rgba(56,189,248,.08));border:1px solid var(--line-2);border-radius:26px;padding:66px;display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center;position:relative;overflow:hidden;isolation:isolate}
 .dif::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--gx),rgba(56,189,248,0) 0deg,rgba(56,189,248,0) 215deg,rgba(56,189,248,.85) 300deg,#e3f5fe 332deg,rgba(56,189,248,.85) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:gxspin 8.5s linear infinite;opacity:.4}
 .dif::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%);top:-130px;right:-90px;filter:blur(40px);pointer-events:none;z-index:0}
 .dif-txt{position:relative;z-index:2}
 .dif-txt h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.9rem,3.8vw,2.95rem);line-height:1.12;letter-spacing:-.03em;margin-bottom:20px}
 .dif-txt p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
+.dif-txt p{color:var(--muted);font-size:1.04rem;line-height:1.65;margin-top:15px}
+.dif-txt .dif-lead{font-size:1.22rem;line-height:1.55;color:#dbe4f0}
 .dif-list{position:relative;z-index:2;display:flex;flex-direction:column;gap:13px}
 .dif-item{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,rgba(21,32,58,.72),rgba(14,23,41,.72));border:1px solid rgba(56,189,248,.16);border-radius:14px;padding:18px 20px;transition:transform .22s,border-color .22s,box-shadow .22s}
 .dif-item:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.42);box-shadow:0 14px 32px rgba(2,6,18,.4)}
@@ -202,9 +204,11 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 /* Testimonials */
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mtrack{display:flex;gap:22px;width:max-content;align-items:center;animation:scrollx 52s linear infinite}
-.mtrack.lmt{animation-duration:30s}
+.mtrack.lmt{animation-duration:34s}
 .mtrack.rmt{animation-duration:66s}
-.shot-card{margin:0;width:440px;flex:none;border-radius:16px;overflow:hidden;border:1px solid rgba(56,189,248,.18);box-shadow:0 0 26px rgba(56,189,248,.06),0 18px 42px rgba(2,6,18,.45)}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1000px;margin:0 auto}
+.shot-card{margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,.2);box-shadow:0 0 26px rgba(56,189,248,.06),0 18px 42px rgba(2,6,18,.45);transition:transform .25s,border-color .25s,box-shadow .25s}
+.shot-card:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.45);box-shadow:0 0 34px rgba(56,189,248,.16),0 22px 50px rgba(2,6,18,.5)}
 .shot-card img{display:block;width:100%;height:auto}
 .marquee:hover .mtrack{animation-play-state:paused}
 .tc{width:380px;background:linear-gradient(180deg,#15203A,#0E1729);border:1px solid rgba(56,189,248,.2);border-radius:var(--r);padding:28px;flex:none;display:flex;flex-direction:column;box-shadow:0 0 26px rgba(56,189,248,.07),0 18px 42px rgba(2,6,18,.45)}
@@ -219,7 +223,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.85rem,7vw,6.2rem);lin
 .trust{padding:48px 0 6px}
 .trust-h{text-align:center;color:var(--muted-2);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
 .trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px}
-.tl{width:92px;height:92px;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,.22);background:rgba(15,30,55,.65);transition:transform .25s,border-color .25s,box-shadow .25s}
+.tl{width:96px;height:96px;border-radius:20px;overflow:hidden;border:1px solid rgba(56,189,248,.24);background:rgba(15,30,55,.72);transition:transform .25s,border-color .25s,box-shadow .25s}
 .tl:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.55);box-shadow:0 0 28px rgba(56,189,248,.22)}
 .hero-shot .shot-frame{animation:floaty 7s ease-in-out infinite}
 .float-card{position:absolute;display:inline-flex;align-items:center;gap:8px;background:rgba(13,20,36,.92);border:1px solid rgba(56,189,248,.3);border-radius:12px;padding:9px 13px;font-family:var(--fd);font-size:.8rem;font-weight:600;color:var(--text);box-shadow:0 14px 34px rgba(2,6,18,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:4;white-space:nowrap;animation:floaty 6s ease-in-out infinite}
@@ -303,6 +307,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 @media(max-width:760px){
   .stats-grid{grid-template-columns:repeat(2,1fr);gap:32px 16px;padding:32px 16px}
   .stat-b+.stat-b::before{display:none}
+  .tgrid{grid-template-columns:1fr;max-width:440px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%;justify-content:center}
 }
@@ -316,7 +321,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .feat-grid,.steps,.inc-grid,.foot-grid{grid-template-columns:1fr}
   .sec{padding:70px 0}.hero{padding:132px 0 56px}
   .stat-row3{grid-template-columns:1fr}
-  .toast{display:none}.tc{width:300px}.shot-card{width:300px}.tl{width:68px;height:68px}.logo-img{height:27px}
+  .toast{display:none}.tc{width:300px}.tl{width:68px;height:68px}.logo-img{height:27px}
   .dif,.inc,.cta{padding:36px 22px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
 }
@@ -477,7 +482,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     <div class="dif reveal">
       <div class="dif-txt">
         <h2>El software de gimnasio pensado para <span class="ac">México</span></h2>
-        <p>Otros sistemas asumen que todos tus clientes tienen tarjeta. Gymvexa entiende la realidad: efectivo, fiado, recepción manual y socios sin banco.</p>
+        <p class="dif-lead">Otros sistemas asumen que todos tus clientes tienen tarjeta. Gymvexa entiende la realidad: efectivo, fiado, recepción manual y socios sin banco.</p>
         <p>Gymvexa abraza esa realidad y la convierte en control: pagos registrados, deuda visible, caja ordenada y socios con acceso automatizado.</p>
       </div>
       <div class="dif-list">
@@ -525,17 +530,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <h2>Dueños reales. Problemas reales. <span class="ac">Control real.</span></h2>
       <p>Gimnasios que ya recuperaron control de caja, accesos, ventas y socios con Gymvexa.</p>
     </div>
-  </div>
-  <div class="marquee">
-    <div class="mtrack rmt">
-      <figure class="shot-card"><img src="assets/rev-megahulk.webp" alt="Reseña de Megahulk Gym" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-martin.webp" alt="Reseña de GYM MARTIN" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-crack.webp" alt="Reseña de Gym Crack" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-yu.webp" alt="Reseña de YU GYM" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-megahulk.webp" alt="" aria-hidden="true" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-martin.webp" alt="" aria-hidden="true" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-crack.webp" alt="" aria-hidden="true" loading="lazy"></figure>
-      <figure class="shot-card"><img src="assets/rev-yu.webp" alt="" aria-hidden="true" loading="lazy"></figure>
+    <div class="tgrid">
+      <figure class="shot-card reveal"><img src="assets/rev-megahulk.webp" alt="Reseña de Megahulk Gym" loading="lazy"></figure>
+      <figure class="shot-card reveal d1"><img src="assets/rev-martin.webp" alt="Reseña de GYM MARTIN" loading="lazy"></figure>
+      <figure class="shot-card reveal d2"><img src="assets/rev-crack.webp" alt="Reseña de Gym Crack" loading="lazy"></figure>
+      <figure class="shot-card reveal d3"><img src="assets/rev-yu.webp" alt="Reseña de YU GYM" loading="lazy"></figure>
     </div>
   </div>
 </section>
