@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gymvexa — El sistema para gimnasios que sí entiende México</title>
+<meta name="description" content="Gymvexa automatiza accesos, membresías, cobros, monedero, fiado y productos de tu gimnasio — aunque tus clientes paguen en efectivo. Crea tu cuenta y míralo por dentro.">
+<meta name="theme-color" content="#070B14">
+<meta property="og:title" content="Gymvexa — Control total para tu gimnasio">
+<meta property="og:description" content="Accesos, membresías, cobros, monedero y fiado en un solo sistema. Aunque tus clientes paguen en efectivo.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#070B14;
+  --surface:#0D1424;
+  --surface-2:#111A2E;
+  --line:rgba(148,163,184,.12);
+  --line-2:rgba(148,163,184,.24);
+  --blue:#2563EB;
+  --blue-2:#3B82F6;
+  --cyan:#38BDF8;
+  --cyan-2:#7DD3FC;
+  --text:#F8FAFC;
+  --muted:#9AA7BD;
+  --muted-2:#64748B;
+  --green:#22C55E;
+  --fd:'Space Grotesk',system-ui,sans-serif;
+  --fb:'Plus Jakarta Sans',system-ui,sans-serif;
+  --r:18px;--r-sm:12px;--maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--base);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* Background */
+.bg{position:fixed;inset:0;z-index:-1;background:var(--base);overflow:hidden}
+.bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% -5%,#000 35%,transparent 78%);mask-image:radial-gradient(ellipse 90% 55% at 50% -5%,#000 35%,transparent 78%);opacity:.55}
+.aurora{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;will-change:transform}
+.a1{width:620px;height:620px;background:radial-gradient(circle,#2563EB,transparent 68%);top:-220px;left:-140px;animation:drift1 22s ease-in-out infinite}
+.a2{width:520px;height:520px;background:radial-gradient(circle,#38BDF8,transparent 66%);top:-120px;right:-120px;animation:drift2 26s ease-in-out infinite}
+.a3{width:640px;height:640px;background:radial-gradient(circle,#1E40AF,transparent 70%);top:1500px;left:35%;opacity:.3;animation:drift1 30s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,50px)}}
+
+/* Nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s}
+header.scrolled{background:rgba(7,11,20,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo-img{height:40px;width:auto}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:.94rem;color:var(--muted);font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:flex;align-items:center;gap:13px}
+.btn{font-family:var(--fb);font-weight:600;font-size:.94rem;border:none;cursor:pointer;border-radius:11px;padding:12px 22px;transition:transform .15s,box-shadow .25s,background .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;position:relative;overflow:hidden}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;box-shadow:0 8px 26px rgba(37,99,235,.42)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(56,189,248,.5)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line-2)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--cyan);background:rgba(56,189,248,.08)}
+.menu-btn{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:6px}
+.menu-btn svg{width:28px;height:28px}
+
+/* Hero */
+.hero{padding:170px 0 90px;text-align:center}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.05em;color:var(--cyan-2);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.22);padding:8px 16px;border-radius:100px;margin-bottom:30px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.9rem);line-height:1.03;letter-spacing:-.04em;margin-bottom:26px}
+.grad{background:linear-gradient(115deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:clamp(1.06rem,2vw,1.3rem);color:var(--muted);max-width:660px;margin:0 auto 38px;line-height:1.6}
+.hero-actions{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.hero-actions .btn{padding:15px 30px;font-size:1rem}
+.micro{font-size:.85rem;color:var(--muted-2)}
+.micro b{color:var(--muted);font-weight:600}
+
+/* Pay row */
+.pay-row{display:flex;align-items:center;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:34px}
+.pay-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:9px;padding:7px 13px;color:var(--muted);font-size:.83rem;font-weight:500}
+.pay-pill svg{width:15px;height:15px;color:var(--cyan)}
+
+/* Product mock */
+.mock{margin:62px auto 0;max-width:920px;position:relative;z-index:2;animation:floaty 7s ease-in-out infinite}
+.window{background:linear-gradient(180deg,rgba(17,26,46,.94),rgba(13,20,36,.94));border:1px solid var(--line-2);border-radius:18px;box-shadow:0 44px 120px rgba(2,6,18,.7),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden;backdrop-filter:blur(6px);transition:transform .25s ease;transform-style:preserve-3d;will-change:transform}
+.win-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.win-bar .d{width:11px;height:11px;border-radius:50%}
+.win-bar .r{background:#ef4444aa}.win-bar .y{background:#fbbf24aa}.win-bar .g{background:#22c55eaa}
+.win-bar .url{margin-left:auto;font-size:.76rem;color:var(--muted-2);font-family:var(--fd);letter-spacing:.02em}
+.win-body{display:grid;grid-template-columns:196px 1fr;min-height:336px}
+.win-side{border-right:1px solid var(--line);padding:20px 15px;display:flex;flex-direction:column;gap:6px}
+.si{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;font-size:.87rem;color:var(--muted);font-weight:500}
+.si.on{background:rgba(56,189,248,.1);color:var(--text)}
+.si i{width:8px;height:8px;border-radius:3px;background:var(--muted-2);flex:none}
+.si.on i{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.win-main{padding:22px 24px}
+.stat-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.s3{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:13px;padding:15px}
+.s3 .k{font-size:.7rem;color:var(--muted-2);font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+.s3 .v{font-family:var(--fd);font-weight:700;font-size:1.5rem;margin-top:6px}
+.s3 .v.cy{color:var(--cyan)}.s3 .v.gr{color:var(--green)}
+.mlist{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.mrow{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line);font-size:.9rem}
+.mrow:last-child{border-bottom:none}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1E40AF,#38BDF8);display:grid;place-items:center;font-weight:700;font-size:.8rem;flex:none;color:#fff}
+.mrow .nm{font-weight:600}.mrow .meta{color:var(--muted-2);font-size:.77rem}
+.chip{margin-left:auto;font-size:.73rem;font-weight:600;padding:5px 11px;border-radius:100px}
+.chip.ok{color:#bbf7d0;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.3)}
+.chip.warn{color:#fde68a;background:rgba(250,204,21,.13);border:1px solid rgba(250,204,21,.3)}
+.chip.due{color:#fdba74;background:rgba(249,115,22,.13);border:1px solid rgba(249,115,22,.3)}
+.toast{position:absolute;right:-14px;bottom:48px;background:rgba(13,20,36,.97);border:1px solid rgba(34,197,94,.35);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:11px;animation:floaty 6s ease-in-out infinite reverse,toastpulse 2.8s ease-in-out infinite}
+@keyframes toastpulse{0%,100%{box-shadow:0 22px 54px rgba(2,6,18,.6),0 0 0 0 rgba(34,197,94,0)}50%{box-shadow:0 22px 54px rgba(2,6,18,.6),0 0 0 7px rgba(34,197,94,.08)}}
+.toast .ic{width:30px;height:30px;border-radius:9px;background:rgba(34,197,94,.16);display:grid;place-items:center;color:var(--green)}
+.toast .ic svg{width:17px;height:17px}
+.toast .tt{font-size:.81rem;font-weight:600}.toast .ts{font-size:.71rem;color:var(--muted-2)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+
+/* Stats band */
+.stats{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-b .n{font-family:var(--fd);font-weight:700;font-size:clamp(2.2rem,4vw,3rem);letter-spacing:-.03em;background:linear-gradient(120deg,var(--cyan),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-b .l{color:var(--muted);font-size:.95rem;margin-top:6px}
+
+/* Sections */
+.sec{padding:100px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 60px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.kicker::before{content:"";width:22px;height:1px;background:var(--cyan);opacity:.6}
+.sec-head h2{font-family:var(--fd);font-weight:700;font-size:clamp(2rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:18px}
+.sec-head p{color:var(--muted);font-size:1.08rem}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);pointer-events:none}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:.3s;background:radial-gradient(420px circle at var(--cx,50%) var(--cy,0%),rgba(56,189,248,.1),transparent 70%);pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:rgba(56,189,248,.4);box-shadow:0 22px 54px rgba(2,6,18,.5)}
+.card:hover::after{opacity:1}
+.ic-box{width:54px;height:54px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:grid;place-items:center;color:var(--cyan);margin-bottom:22px}
+.ic-box svg{width:26px;height:26px}
+.card h3{font-family:var(--fd);font-weight:600;font-size:1.2rem;margin-bottom:11px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:.96rem}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{position:relative;padding:30px 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.step .num{font-family:var(--fd);font-weight:700;font-size:1.05rem;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;margin-bottom:18px;box-shadow:0 8px 20px rgba(37,99,235,.4)}
+.step h4{font-family:var(--fd);font-weight:600;font-size:1.08rem;margin-bottom:9px}
+.step p{color:var(--muted);font-size:.92rem}
+
+/* Diferenciador */
+.dif{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.05));border:1px solid var(--line-2);border-radius:26px;padding:60px;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
+.dif::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%);top:-130px;right:-90px;filter:blur(40px)}
+.dif-txt{position:relative;z-index:2}
+.dif-txt h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.12;letter-spacing:-.03em;margin-bottom:20px}
+.dif-txt p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
+.dif-list{position:relative;z-index:2;display:flex;flex-direction:column;gap:13px}
+.dif-item{display:flex;gap:14px;align-items:flex-start;background:rgba(7,11,20,.45);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.dif-item .ck{width:26px;height:26px;border-radius:8px;background:rgba(34,197,94,.16);color:var(--green);display:grid;place-items:center;flex:none}
+.dif-item .ck svg{width:15px;height:15px}
+.dif-item b{font-family:var(--fd);font-weight:600;font-size:1rem;display:block;margin-bottom:3px}
+.dif-item span{color:var(--muted);font-size:.9rem}
+
+/* Incluye */
+.inc{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:56px}
+.inc-top{text-align:center;max-width:620px;margin:0 auto 40px}
+.inc-top h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.03em;margin-bottom:14px}
+.inc-top p{color:var(--muted);font-size:1.05rem}
+.inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;max-width:820px;margin:0 auto 40px}
+.inc-item{display:flex;gap:12px;align-items:center;font-size:1rem;color:var(--text);padding:6px 0}
+.inc-item svg{width:20px;height:20px;color:var(--cyan);flex:none}
+.inc-cta{text-align:center}
+
+/* Testimonials */
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mtrack{display:flex;gap:22px;width:max-content;animation:scrollx 40s linear infinite}
+.marquee:hover .mtrack{animation-play-state:paused}
+.tc{width:380px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;flex:none}
+.tc p{color:var(--text);font-size:1rem;line-height:1.6;margin-bottom:20px}
+.tw{display:flex;align-items:center;gap:13px}
+.tw .av{width:40px;height:40px;font-size:.88rem}
+.tw .nm{font-family:var(--fd);font-weight:600;font-size:.95rem}
+.tw .ro{color:var(--muted-2);font-size:.82rem}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 11px))}}
+
+/* CTA */
+.cta{text-align:center;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(56,189,248,.09));border:1px solid var(--line-2);border-radius:28px;padding:74px 40px;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.14),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.cta .in{position:relative;z-index:2}
+.cta h2{font-family:var(--fd);font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
+.cta p{color:var(--muted);font-size:1.1rem;margin-bottom:34px;max-width:520px;margin-inline:auto}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand .logo-img{height:34px;margin-bottom:16px}
+.foot-brand p{color:var(--muted);font-size:.92rem;max-width:280px}
+.foot-col h5{font-family:var(--fd);font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted);font-size:.92rem;margin-bottom:12px;transition:.2s}
+.foot-col a:hover{color:var(--cyan)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:28px;border-top:1px solid var(--line);color:var(--muted-2);font-size:.86rem}
+.socials{display:flex;gap:12px}
+.socials a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:.2s}
+.socials a:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.socials svg{width:18px;height:18px}
+
+/* WhatsApp */
+.wa{position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 26px rgba(37,211,102,.45);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:30px;height:30px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+.hero .eyebrow,.hero h1,.hero .sub,.hero-actions,.hero .micro,.pay-row,.mock{opacity:0;animation:rise .85s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1{animation-delay:.08s}.hero .sub{animation-delay:.2s}.hero-actions{animation-delay:.32s}.hero .micro{animation-delay:.4s}.pay-row{animation-delay:.46s}.mock{animation-delay:.54s}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Responsive */
+@media(max-width:1024px){
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .dif{grid-template-columns:1fr;padding:44px;gap:34px}
+  .win-body{grid-template-columns:1fr}.win-side{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:760px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px 20px}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta .btn{display:none}
+  .menu-btn{display:block}
+  .nav-menu{position:absolute;top:76px;left:0;right:0;background:rgba(7,11,20,.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--line-2);flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 20px;display:none}
+  .nav-menu.open{display:flex}
+  .nav-menu a{padding:14px 0;border-bottom:1px solid var(--line);color:var(--text)}
+  .feat-grid,.steps,.inc-grid,.foot-grid{grid-template-columns:1fr}
+  .sec{padding:70px 0}.hero{padding:132px 0 56px}
+  .stat-row3{grid-template-columns:1fr}
+  .toast{display:none}.tc{width:300px}
+  .dif,.inc,.cta{padding:36px 22px}
+  .foot-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="bg"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
+
+<!-- NAV -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" aria-label="Gymvexa"><img src="assets/logo.svg" alt="Gymvexa" class="logo-img"></a>
+    <nav class="nav-links nav-menu" id="navMenu">
+      <a href="#caracteristicas">Características</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#incluye">Qué incluye</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
+      <a href="#" class="btn btn-ghost">Iniciar sesión</a>
+      <a href="#" class="btn btn-primary">Comenzar gratis</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Plataforma para gimnasios · v.2026</span>
+    <h1>El control de tu gimnasio,<br>aunque cobren <span class="grad">en efectivo</span></h1>
+    <p class="sub">Accesos, membresías, cobros, monedero, fiado y productos — todo en un solo sistema. Sin obligar a tus socios a tener tarjeta o banco.</p>
+    <div class="hero-actions">
+      <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
+      <a href="#" class="btn btn-primary">Comenzar gratis</a>
+      <a href="#como" class="btn btn-ghost">Ver cómo funciona</a>
+    </div>
+    <p class="micro">Crea tu cuenta y explora el panel por dentro. <b>Sin tarjeta para empezar.</b></p>
+    <div class="pay-row">
+      <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>Efectivo</span>
+      <span class="pay-pill">OXXO</span>
+      <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Tarjeta</span>
+      <span class="pay-pill">Transferencia</span>
+      <span class="pay-pill">Monedero</span>
+    </div>
+
+    <div class="mock">
+      <div class="window">
+        <div class="win-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.gymvexa.com</span></div>
+        <div class="win-body">
+          <aside class="win-side">
+            <div class="si on"><i></i>Resumen</div>
+            <div class="si"><i></i>Socios</div>
+            <div class="si"><i></i>Accesos</div>
+            <div class="si"><i></i>Ventas</div>
+            <div class="si"><i></i>Caja</div>
+            <div class="si"><i></i>Inventario</div>
+          </aside>
+          <main class="win-main">
+            <div class="stat-row3">
+              <div class="s3"><div class="k">Socios activos</div><div class="v cy">248</div></div>
+              <div class="s3"><div class="k">Ingresos hoy</div><div class="v gr">$8,420</div></div>
+              <div class="s3"><div class="k">Accesos hoy</div><div class="v">163</div></div>
+            </div>
+            <div class="mlist">
+              <div class="mrow"><span class="av">JP</span><div><div class="nm">Juan Pérez</div><div class="meta">Plan mensual · entró 7:42</div></div><span class="chip ok">Activo</span></div>
+              <div class="mrow"><span class="av">MR</span><div><div class="nm">María Ríos</div><div class="meta">Plan estudiante</div></div><span class="chip warn">Por vencer</span></div>
+              <div class="mrow"><span class="av">LG</span><div><div class="nm">Luis García</div><div class="meta">Fiado: $80</div></div><span class="chip due">Adeudo</span></div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="toast">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div><div class="tt">Acceso permitido</div><div class="ts">Membresía al corriente</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-b reveal"><div class="n" data-count="6" data-suffix="+">6+</div><div class="l">Métodos de pago</div></div>
+      <div class="stat-b reveal d1"><div class="n" data-count="3">3</div><div class="l">Vistas en un sistema</div></div>
+      <div class="stat-b reveal d2"><div class="n" data-count="0" data-prefix="$">$0</div><div class="l">Comisión por socio</div></div>
+      <div class="stat-b reveal d3"><div class="n">24/7</div><div class="l">Acceso y control</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec" id="caracteristicas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Todo en un sistema</div>
+      <h2>Lo que tu gimnasio necesita, sin complicaciones</h2>
+      <p>Pensado para gimnasios reales: efectivo, fiado, recepción y socios sin banco. Cada función la prendes o apagas según tu gym.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="card reveal"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div><h3>Acceso inteligente</h3><p>Entrada por QR, PIN o tarjeta. Si la membresía está al corriente, abre; si está vencida, no. Y todo queda registrado con hora.</p></div>
+      <div class="card reveal d1"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M16 12h.01"/><path d="M2 10h20"/></svg></div><h3>Cobra como sea</h3><p>Efectivo, OXXO, transferencia, tarjeta o monedero digital. Tus clientes no necesitan banco para pagar su membresía o productos.</p></div>
+      <div class="card reveal d2"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div><h3>Monedero digital</h3><p>Saldo prepagado por socio. Recargan en efectivo y compran agua, proteína o renuevan su plan ellos solos, sin recepción.</p></div>
+      <div class="card reveal"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg></div><h3>Fiado controlado</h3><p>Permite fiar con un tope que tú defines. Sabes quién debe, cuánto y desde cuándo — y la deuda no se borra al cancelar.</p></div>
+      <div class="card reveal d1"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="20" x2="5" y2="13"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="19" y1="20" x2="19" y2="4"/></svg></div><h3>Cierre de caja</h3><p>Cuadra tu día: cuánto debió entrar, corte por turno y diferencias. La respuesta a “¿cuánto dinero entró hoy?”, sin sorpresas.</p></div>
+      <div class="card reveal d2"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 8 12 14 2 8 12 2"/><polyline points="2 16 12 22 22 16"/></svg></div><h3>Tres vistas en una</h3><p>Panel del dueño, mostrador para tus clientes y app de miembros en el celular. Cada quien ve solo lo que le toca.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="sec" id="como">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Empieza en minutos</div>
+      <h2>Pruébalo antes de pagar</h2>
+      <p>Crea tu cuenta gratis, explora todo lo que incluye por dentro y actívalo cuando estés listo.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h4>Crea tu cuenta</h4><p>Regístrate gratis en segundos. Sin tarjeta para empezar.</p></div>
+      <div class="step reveal d1"><div class="num">2</div><h4>Explora tu panel</h4><p>Entra y mira todo lo que incluye Gymvexa por dentro.</p></div>
+      <div class="step reveal d2"><div class="num">3</div><h4>Actívalo</h4><p>Desbloquea tu gimnasio con un pago seguro por Stripe.</p></div>
+      <div class="step reveal d3"><div class="num">4</div><h4>Opera y controla</h4><p>Accesos, cobros, socios y caja, todo en tiempo real.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADOR -->
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="dif reveal">
+      <div class="dif-txt">
+        <h2>El software de gimnasio pensado para México</h2>
+        <p>Los sistemas grandes asumen que todos tus clientes tienen tarjeta y banco. La realidad de un gimnasio local es otra: efectivo, fiado, recepción manual y socios sin cuenta bancaria.</p>
+        <p>Gymvexa abraza esa realidad en lugar de pelearse con ella — y la convierte en control total.</p>
+      </div>
+      <div class="dif-list">
+        <div class="dif-item"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Funciona sin banco</b><span>Tus clientes pagan en efectivo y siguen teniendo monedero, acceso y app.</span></div></div>
+        <div class="dif-item"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>El fiado, bajo control</b><span>Lo que ya hacías informal, ahora con tope, registro y trazabilidad.</span></div></div>
+        <div class="dif-item"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Antifraude con evidencia</b><span>Cada venta con hora y quién, lista para cruzar con tus cámaras.</span></div></div>
+        <div class="dif-item"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Menos recepción, menos fugas</b><span>Tus socios compran, renuevan y se inscriben solos desde la tablet.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUYE -->
+<section class="sec" id="incluye">
+  <div class="wrap">
+    <div class="inc reveal">
+      <div class="inc-top">
+        <div class="kicker" style="justify-content:center">Todo incluido</div>
+        <h2>Un solo sistema. Sin comisión por socio.</h2>
+        <p>El dinero de tus clientes es tuyo y llega directo a tu cuenta. Tú solo pagas por usar Gymvexa.</p>
+      </div>
+      <div class="inc-grid">
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Panel del dueño completo</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mostrador para tus clientes</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>App de miembros (PWA)</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acceso por QR, PIN y tarjeta</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monedero digital y fiado</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cierre de caja por turno</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Inventario y ventas</div>
+        <div class="inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Socios y planes ilimitados</div>
+      </div>
+      <div class="inc-cta">
+        <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
+        <a href="#" class="btn btn-primary">Crear cuenta y verlo por dentro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="sec" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" style="justify-content:center">Lo que dicen</div>
+      <h2>Dueños que ya tomaron el control</h2>
+    </div>
+  </div>
+  <!-- TESTIMONIOS: reemplazar por reales cuando estén disponibles -->
+  <div class="marquee">
+    <div class="mtrack">
+      <div class="tc"><p>“Antes la recepción era un agujero de dinero. Ahora veo cada venta con su hora y se acabaron las fugas.”</p><div class="tw"><span class="av">CR</span><div><div class="nm">Carlos R.</div><div class="ro">Dueño · Iron House Gym</div></div></div></div>
+      <div class="tc"><p>“Mis socios recargan saldo en efectivo y compran solos. Bajé el trabajo de mostrador a la mitad.”</p><div class="tw"><span class="av">AM</span><div><div class="nm">Ana M.</div><div class="ro">Dueña · Studio Fit</div></div></div></div>
+      <div class="tc"><p>“El cierre de caja me dice exactamente cuánto debió entrar. Por fin duermo tranquilo.”</p><div class="tw"><span class="av">JL</span><div><div class="nm">Jorge L.</div><div class="ro">Dueño · PowerZone</div></div></div></div>
+      <div class="tc"><p>“El fiado ya no es un caos. Tope, registro y todo claro. Justo lo que necesitaba.”</p><div class="tw"><span class="av">DT</span><div><div class="nm">Diana T.</div><div class="ro">Dueña · Box Central</div></div></div></div>
+      <div class="tc"><p>“Lo instalé sin saber de tecnología. En una tarde ya estaba cobrando con el sistema.”</p><div class="tw"><span class="av">RH</span><div><div class="nm">Raúl H.</div><div class="ro">Dueño · Atlas Gym</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="in">
+        <h2>Toma el control de tu gimnasio hoy</h2>
+        <p>Crea tu cuenta gratis y mira por dentro cómo Gymvexa ordena tus accesos, cobros y socios en un solo lugar.</p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
+          <a href="#" class="btn btn-primary">Comenzar gratis</a>
+          <a href="https://wa.me/52XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Gymvexa" target="_blank" class="btn btn-ghost">Hablar con ventas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logo.svg" alt="Gymvexa" class="logo-img">
+        <p>El sistema de gestión para gimnasios que funciona aunque tus clientes paguen en efectivo.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Producto</h5>
+        <a href="#caracteristicas">Características</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#incluye">Qué incluye</a>
+      </div>
+      <div class="foot-col">
+        <h5>Empresa</h5>
+        <a href="#porque">Por qué Gymvexa</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#">Aviso de privacidad</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/52XXXXXXXXXX" target="_blank">WhatsApp</a>
+        <a href="mailto:hola@gymvexa.com">hola@gymvexa.com</a>
+        <a href="#">Tehuacán, Puebla, MX</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Gymvexa · Un producto de TEC CAPITAL Group.</span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v7h3v-7h2.5l.5-3H14V9z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9v3c-1.4 0-2.7-.4-3.8-1.1V15a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v3.1a2.5 2.5 0 1 0 1.7 2.3V3H16z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp: reemplazar 52XXXXXXXXXX por el número real -->
+<a class="wa" href="https://wa.me/52XXXXXXXXXX?text=Hola%2C%20me%20interesa%20Gymvexa" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.535 5.874L0 24l6.29-1.508A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 01-5.058-1.4l-.361-.214-3.735.896.944-3.653-.235-.374A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20));
+const mb=document.getElementById('menuBtn'),nm=document.getElementById('navMenu');
+mb.addEventListener('click',()=>nm.classList.toggle('open'));
+nm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nm.classList.remove('open')));
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--cx',(e.clientX-r.left)+'px');c.style.setProperty('--cy',(e.clientY-r.top)+'px')}));
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  const el=e.target, end=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+  let t0=null; const dur=1100;
+  const tick=(t)=>{if(!t0)t0=t;const p=Math.min((t-t0)/dur,1);el.textContent=pre+Math.round(p*end)+suf;if(p<1)requestAnimationFrame(tick)};
+  requestAnimationFrame(tick);
+},{threshold:.5});
+document.querySelectorAll('.n[data-count]').forEach(el=>cio.observe(el));
+// Dynamic cursor interactions (Jerome-style) — solo desktop, respeta reduce-motion
+const fine=matchMedia('(pointer:fine)').matches, calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(fine&&!calm){
+  document.querySelectorAll('.btn-primary').forEach(b=>{
+    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.18}px,${y*.32-2}px)`});
+    b.addEventListener('mouseleave',()=>{b.style.transform=''});
+  });
+  const win=document.querySelector('.window'), hero=document.querySelector('.hero');
+  if(win&&hero){
+    hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;win.style.transform=`perspective(1200px) rotateY(${px*5}deg) rotateX(${-py*4}deg)`});
+    hero.addEventListener('mouseleave',()=>{win.style.transform=''});
+  }
+}
+</script>
+</body>
+</html>
