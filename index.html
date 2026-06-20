@@ -601,6 +601,28 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 @keyframes revDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
 .rev-marquee.is-marquee:hover .rev-track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.rev-marquee .rev-track{animation:none!important}}
+/* ===== Hero con imagen de fondo a pantalla completa (estilo Jerome) ===== */
+.hero{position:relative;overflow:hidden;min-height:clamp(640px,90vh,900px);display:flex;align-items:center;padding:124px 0 66px;text-align:left}
+.hero::before{display:none}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:75% 48%;z-index:0}
+.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(3,7,18,.985) 0%,rgba(3,7,18,.965) 30%,rgba(3,7,18,.87) 47%,rgba(3,7,18,.56) 60%,rgba(3,7,18,.3) 74%,rgba(3,7,18,.12) 100%),linear-gradient(0deg,var(--base) 0%,rgba(3,7,18,.3) 13%,transparent 34%),linear-gradient(180deg,rgba(3,7,18,.64) 0%,transparent 18%)}
+.hero .wrap{position:relative;z-index:2}
+.hero-copy{max-width:640px}
+.hero-copy h1{font-size:clamp(2.4rem,4.7vw,4rem);line-height:1.03;margin-bottom:22px;text-shadow:0 2px 34px rgba(2,6,18,.62)}
+.hero-copy .sub{text-align:left;max-width:540px;margin:0 0 32px;color:#c6d1e1;text-shadow:0 1px 20px rgba(2,6,18,.55)}
+.hero-copy .hero-actions{justify-content:flex-start;margin-bottom:24px}
+.hero-copy .micro{text-align:left}
+.hero-copy .pay-label{text-align:left;margin:22px 0 13px}
+.hero-copy .pay-row{justify-content:flex-start;margin-top:0}
+.hero-copy .pay-note{text-align:left;max-width:500px;margin:13px 0 0}
+@media(max-width:768px){
+  .hero{min-height:clamp(560px,86vh,740px);padding:104px 0 48px}
+  .hero-copy{max-width:none}
+  .hero-copy h1{font-size:clamp(2.05rem,8.4vw,3rem)}
+  .hero-copy .sub{font-size:1.02rem}
+  .hero-bg{object-position:62% 46%}
+  .hero-scrim{background:linear-gradient(180deg,rgba(3,7,18,.9) 0%,rgba(3,7,18,.7) 34%,rgba(3,7,18,.6) 58%,rgba(3,7,18,.85) 82%,var(--base) 100%)}
+}
 </style>
 </head>
 <body>
@@ -642,30 +664,27 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 
 <!-- HERO -->
 <section class="hero">
+  <img class="hero-bg" src="assets/principal.webp" alt="Mostrador de gimnasio con el panel Gymvexa en tablet, la app de socios con QR y registro de accesos en tiempo real" width="1600" height="900" loading="eager" fetchpriority="high">
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Plataforma SaaS para gimnasios · 2026</span>
-    <h1>El sistema que trabaja<br><span class="grad">aunque tú no estés</span></h1>
-    <p class="sub">Automatiza accesos, socios, cobros, monedero, fiado, caja y productos. Pensado para gimnasios que cobran en efectivo, transferencia, OXXO o tarjeta.</p>
-    <div class="hero-actions">
-      <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
-      <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
-      <a href="#como" class="btn btn-ghost">Ver demo del panel</a>
-    </div>
-    <p class="micro">Sin tarjeta para empezar. Sin comisión por socio. <b>Listo para gimnasios reales.</b></p>
-    <p class="pay-label">Cobra como tus clientes ya pagan</p>
-    <div class="pay-row">
-      <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>Efectivo</span>
-      <span class="pay-pill">OXXO</span>
-      <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Tarjeta</span>
-      <span class="pay-pill">Transferencia</span>
-      <span class="pay-pill">Monedero</span>
-    </div>
-    <p class="pay-note">Tus socios no necesitan banco para pagar, renovar o comprar dentro del gimnasio.</p>
-
-    <div class="hero-shot reveal">
-      <div class="shot-frame">
-        <img src="assets/principal.webp" alt="Mostrador de gimnasio con el panel Gymvexa en tablet, la app de socios con QR y registro de accesos en tiempo real" width="1600" height="900" loading="eager" fetchpriority="high">
+    <div class="hero-copy">
+      <h1>El sistema que trabaja<br><span class="grad">aunque tú no estés</span></h1>
+      <p class="sub">Automatiza accesos, socios, cobros, monedero, fiado, caja y productos. Pensado para gimnasios que cobran en efectivo, transferencia, OXXO o tarjeta.</p>
+      <div class="hero-actions">
+        <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
+        <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
+        <a href="#como" class="btn btn-ghost">Ver demo del panel</a>
       </div>
+      <p class="micro">Sin tarjeta para empezar. Sin comisión por socio. <b>Listo para gimnasios reales.</b></p>
+      <p class="pay-label">Cobra como tus clientes ya pagan</p>
+      <div class="pay-row">
+        <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>Efectivo</span>
+        <span class="pay-pill">OXXO</span>
+        <span class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Tarjeta</span>
+        <span class="pay-pill">Transferencia</span>
+        <span class="pay-pill">Monedero</span>
+      </div>
+      <p class="pay-note">Tus socios no necesitan banco para pagar, renovar o comprar dentro del gimnasio.</p>
     </div>
   </div>
 </section>
