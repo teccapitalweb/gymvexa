@@ -53,7 +53,7 @@ img,svg{display:block;max-width:100%}
 @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,50px)}}
 
 /* Nav */
-header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;background:rgba(3,7,18,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.08)}
+header{position:fixed;top:0;left:0;right:0;z-index:120;transition:.3s;background:rgba(3,7,18,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.08)}
 header.scrolled{background:rgba(3,7,18,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.14)}
 .nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:72px;column-gap:28px}
 .brand{display:flex;align-items:center}
@@ -325,12 +325,13 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 }
 /* ===== GYMVEXA EXPLORER ===== */
 /* ===== Overlay narrativo (panel premium) ===== */
-.nv-overlay{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 20% 10%,rgba(37,99,235,.22),transparent 36%),rgba(3,7,18,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s}
+.nv-overlay{position:fixed;inset:0;z-index:90;background:var(--base);overflow-y:auto;overflow-x:hidden;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s}
 .nv-overlay.open{opacity:1;visibility:visible}
-.nv-panel{position:relative;width:min(1100px,100%);max-height:82vh;overflow:hidden;border-radius:28px;border:1px solid rgba(56,189,248,.28);background:linear-gradient(135deg,rgba(17,29,51,.96),rgba(8,20,38,.94));box-shadow:0 0 90px rgba(56,189,248,.16),0 40px 120px rgba(0,0,0,.55);display:grid;grid-template-columns:264px 1fr;transform:translateY(16px) scale(.985);opacity:0;transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s}
-.nv-overlay.open .nv-panel{transform:translateY(0) scale(1);opacity:1}
-.nv-panel::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%);top:-150px;left:-110px;filter:blur(50px);z-index:0;pointer-events:none}
-.nv-close{position:absolute;top:18px;right:20px;z-index:6;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;background:rgba(3,7,18,.5);border:1px solid rgba(56,189,248,.24);color:#cbd5e1;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+.nv-overlay::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 12%,rgba(37,99,235,.18),transparent 42%),radial-gradient(circle at 82% 86%,rgba(56,189,248,.12),transparent 46%);pointer-events:none;z-index:0}
+.nv-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:140px 28px 100px;min-height:100vh}
+.nv-close{position:fixed;top:88px;left:max(22px,calc((100vw - 880px)/2));z-index:95;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 11px;border-radius:999px;background:rgba(13,23,42,.72);border:1px solid rgba(56,189,248,.24);color:#cbd5e1;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;transition:color .2s,background .2s,border-color .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.nv-close:hover{color:#fff;background:rgba(56,189,248,.16);border-color:rgba(56,189,248,.5)}
+.nv-close svg{width:18px;height:18px}
 .nv-close:hover{color:#fff;background:rgba(56,189,248,.16);border-color:rgba(56,189,248,.5)}
 .nv-close svg{width:20px;height:20px}
 .exp-tabs{display:flex;flex-direction:column;gap:6px;padding:24px 16px;border-right:1px solid rgba(56,189,248,.14);position:relative;z-index:2;background:rgba(3,7,18,.28)}
@@ -338,12 +339,22 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 .exp-tab:hover{color:var(--cyan-2);background:rgba(56,189,248,.05)}
 .exp-tab.active{color:#fff;background:linear-gradient(135deg,rgba(37,99,235,.22),rgba(56,189,248,.12));border-color:rgba(56,189,248,.4);box-shadow:0 0 22px rgba(56,189,248,.14)}
 .exp-tab.active::before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(56,189,248,.5)}
-.exp-body{position:relative;z-index:2;padding:clamp(28px,3.4vw,52px);overflow-y:auto;max-height:82vh}
+.exp-body{position:relative;z-index:2}
 .exp-panel{display:none}
-.exp-panel.active{display:block;animation:panelIn .45s ease}
-@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.exp-title{font-family:var(--fd);font-weight:800;font-size:clamp(1.45rem,2.3vw,2.05rem);line-height:1.18;letter-spacing:-.02em;margin-bottom:22px;color:#fff}
-.exp-panel .rt{color:#94A3B8;font-size:1.05rem;line-height:1.7;margin-bottom:22px}
+.exp-panel.active{display:block}
+.nv-overlay.open .exp-panel.active .exp-title{animation:childIn .55s ease both}
+.nv-overlay.open .exp-panel.active .exp-lead{animation:childIn .55s .14s ease both}
+.nv-overlay.open .exp-panel.active .exp-bullets,.nv-overlay.open .exp-panel.active .exp-views{animation:childIn .55s .22s ease both}
+.nv-overlay.open .exp-panel.active .exp-close{animation:childIn .55s .3s ease both}
+@keyframes childIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.exp-title{font-family:var(--fd);font-weight:800;font-size:clamp(1.95rem,3.6vw,3rem);line-height:1.12;letter-spacing:-.025em;margin-bottom:24px;color:#fff}
+.exp-title::before{display:block;font-family:var(--fb);font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+#panel-problema .exp-title::before{content:"01 · Problema real"}
+#panel-operacion .exp-title::before{content:"02 · Operación automática"}
+#panel-dinero .exp-title::before{content:"03 · Dinero y caja"}
+#panel-vistas .exp-title::before{content:"04 · Vistas del sistema"}
+#panel-seguridad .exp-title::before{content:"05 · Seguridad"}
+.exp-panel .rt{color:#94A3B8;font-size:1.12rem;line-height:1.75;margin-bottom:24px}
 .nv-overlay.open .exp-panel.active .rt{animation:rtReveal .8s ease forwards}
 @keyframes rtReveal{from{color:#94A3B8;opacity:.6;transform:translateY(10px)}to{color:#e9eef6;opacity:1;transform:translateY(0)}}
 .gw{background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
@@ -374,15 +385,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .nav-center .nav-mob-btn.btn-primary{margin-top:10px}
 }
 @media(max-width:768px){
-  .nv-overlay{padding:14px;align-items:flex-start;padding-top:72px}
-  .nv-panel{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);max-height:calc(100vh - 92px)}
-  .exp-tabs{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid rgba(56,189,248,.16);padding:14px 58px 14px 14px;gap:8px;scrollbar-width:none}
-  .exp-tabs::-webkit-scrollbar{display:none}
-  .exp-tab{flex:0 0 auto;white-space:nowrap;font-size:.88rem;padding:10px 14px}
-  .exp-tab.active::before{display:none}
-  .exp-body{max-height:none;padding:26px 22px}
+  .nv-inner{padding:96px 18px 76px}
+  .exp-title{font-size:clamp(1.6rem,7.4vw,2.1rem)}
   .exp-bullets{grid-template-columns:1fr;gap:11px}
-  .nv-close{top:13px;right:13px;width:36px;height:36px}
+  .nv-close{top:80px;left:14px;padding:8px 13px 8px 10px;font-size:.8rem}
+  .nv-close span{display:none}
 }
 </style>
 </head>
@@ -504,18 +511,12 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 </section>
 
 <!-- NARRATIVE OVERLAY (Gymvexa Explorer interactivo) -->
-<div class="nv-overlay" id="nvOverlay" aria-hidden="true">
-  <div class="nv-panel" role="dialog" aria-modal="true" aria-label="Gymvexa Explorer">
-    <button class="nv-close" id="nvClose" aria-label="Cerrar panel">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-    </button>
-    <div class="exp-tabs" role="tablist">
-        <button class="exp-tab active" data-panel="problema">Problema real</button>
-        <button class="exp-tab" data-panel="operacion">Operación automática</button>
-        <button class="exp-tab" data-panel="dinero">Dinero y caja</button>
-        <button class="exp-tab" data-panel="vistas">Vistas del sistema</button>
-        <button class="exp-tab" data-panel="seguridad">Seguridad</button>
-      </div>
+<div class="nv-overlay" id="nvOverlay" aria-hidden="true" role="region" aria-label="Gymvexa Explorer">
+  <button class="nv-close" id="nvClose" aria-label="Volver al inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    <span>Volver al inicio</span>
+  </button>
+  <div class="nv-inner">
       <div class="exp-body">
         <div class="exp-panel active" id="panel-problema">
           <h3 class="exp-title">Los gimnasios no pierden control por falta de clientes. Lo pierden por <span class="gw">operar a ciegas</span>.</h3>
@@ -821,7 +822,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     document.body.style.overflow='hidden';
     if(hashMap[id]){ try{ history.replaceState(null,'','#'+hashMap[id]); }catch(e){} }
     if(nm){ nm.classList.remove('open'); }
-    var b=nvBody(); if(b){ b.scrollTop=0; }
+    if(nvOverlay){ nvOverlay.scrollTop=0; }
   }
   function closeNarrative(){
     if(nvOverlay){ nvOverlay.classList.remove('open'); nvOverlay.setAttribute('aria-hidden','true'); }
@@ -830,7 +831,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
   }
   document.querySelectorAll('.nav-tab').forEach(function(t){ t.addEventListener('click',function(e){ e.preventDefault(); openNarrative(t.getAttribute('data-panel')); }); });
-  document.querySelectorAll('.exp-tab').forEach(function(t){ t.addEventListener('click',function(){ setActive(t.getAttribute('data-panel')); var b=nvBody(); if(b){ b.scrollTop=0; } }); });
+  var brand=document.querySelector('.brand');
+  if(brand){ brand.addEventListener('click',function(e){ if(nvOverlay&&nvOverlay.classList.contains('open')){ e.preventDefault(); closeNarrative(); } }); }
   if(nvClose){ nvClose.addEventListener('click',closeNarrative); }
   if(nvOverlay){ nvOverlay.addEventListener('click',function(e){ if(e.target===nvOverlay){ closeNarrative(); } }); }
   document.addEventListener('keydown',function(e){ if((e.key==='Escape'||e.keyCode===27)&&nvOverlay&&nvOverlay.classList.contains('open')){ closeNarrative(); } });
