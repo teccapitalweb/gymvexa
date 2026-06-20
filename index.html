@@ -325,6 +325,47 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .dif,.inc,.cta{padding:36px 22px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
 }
+/* ===== GYMVEXA EXPLORER ===== */
+#gymvexa-explorer{background:rgba(5,11,22,.45)}
+.explorer{display:grid;grid-template-columns:300px 1fr;background:linear-gradient(135deg,rgba(17,29,51,.94),rgba(8,20,38,.92));border:1px solid rgba(56,189,248,.24);border-radius:28px;overflow:hidden;position:relative;box-shadow:0 0 80px rgba(56,189,248,.12),0 30px 80px rgba(2,6,18,.5);isolation:isolate;margin-top:14px}
+.explorer::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.14),transparent 65%);top:-160px;left:-120px;filter:blur(50px);z-index:0;pointer-events:none}
+.exp-tabs{display:flex;flex-direction:column;gap:6px;padding:24px 16px;border-right:1px solid rgba(56,189,248,.14);position:relative;z-index:2;background:rgba(3,7,18,.28)}
+.exp-tab{text-align:left;font-family:var(--fd);font-weight:600;font-size:1rem;color:var(--muted);background:none;border:1px solid transparent;border-radius:14px;padding:15px 18px;cursor:pointer;transition:color .25s,background .25s,border-color .25s,box-shadow .25s;position:relative}
+.exp-tab:hover{color:var(--cyan-2);background:rgba(56,189,248,.05)}
+.exp-tab.active{color:#fff;background:linear-gradient(135deg,rgba(37,99,235,.22),rgba(56,189,248,.12));border-color:rgba(56,189,248,.4);box-shadow:0 0 22px rgba(56,189,248,.14)}
+.exp-tab.active::before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(56,189,248,.5)}
+.exp-body{position:relative;z-index:2;padding:clamp(28px,3.4vw,52px);min-height:540px}
+.exp-panel{display:none}
+.exp-panel.active{display:block;animation:panelIn .45s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.exp-title{font-family:var(--fd);font-weight:800;font-size:clamp(1.45rem,2.3vw,2.05rem);line-height:1.18;letter-spacing:-.02em;margin-bottom:22px;color:#fff}
+.exp-panel .rt{color:#94A3B8;font-size:1.05rem;line-height:1.7;margin-bottom:22px}
+.explorer.lit .exp-panel.active .rt{animation:rtReveal .8s ease forwards}
+@keyframes rtReveal{from{color:#94A3B8;opacity:.6;transform:translateY(10px)}to{color:#e9eef6;opacity:1;transform:translateY(0)}}
+.gw{background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+.mw{position:relative;color:#fff;font-weight:700}
+.mw::after{content:"";position:absolute;left:-2px;right:-2px;bottom:1px;height:38%;background:rgba(56,189,248,.22);border-radius:6px;z-index:-1}
+.exp-lead{background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.22);border-left:3px solid var(--cyan);border-radius:14px;padding:20px 22px;font-size:1.08rem;line-height:1.65;color:#dbe4f0;margin-bottom:24px;box-shadow:0 0 26px rgba(56,189,248,.08)}
+.exp-bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;margin-bottom:24px}
+.exp-bullets li{position:relative;padding-left:26px;color:#aab6c9;font-size:.97rem;line-height:1.5}
+.exp-bullets li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 0 8px rgba(56,189,248,.5)}
+.exp-views{list-style:none;counter-reset:v;display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.exp-views li{counter-increment:v;position:relative;padding:16px 18px 16px 62px;background:rgba(255,255,255,.02);border:1px solid rgba(56,189,248,.16);border-radius:14px}
+.exp-views li::before{content:counter(v);position:absolute;left:16px;top:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:.95rem;color:#fff;border-radius:9px;background:linear-gradient(135deg,rgba(37,99,235,.55),rgba(56,189,248,.32));border:1px solid rgba(56,189,248,.4)}
+.exp-views li b{display:block;font-family:var(--fd);color:#fff;font-size:1.02rem;margin-bottom:3px}
+.exp-views li span{color:#9aa7bd;font-size:.93rem;line-height:1.5}
+.exp-close{font-family:var(--fd);font-weight:700;font-size:1.12rem;color:#fff;border-top:1px solid rgba(56,189,248,.14);padding-top:18px}
+.nav-links a.nav-tab.active{color:var(--cyan-2)}
+.nav-links a.nav-tab.active::after{opacity:1}
+@media(max-width:860px){
+  .explorer{grid-template-columns:1fr}
+  .exp-tabs{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid rgba(56,189,248,.14);padding:14px;gap:8px;scrollbar-width:none}
+  .exp-tabs::-webkit-scrollbar{display:none}
+  .exp-tab{flex:0 0 auto;white-space:nowrap;font-size:.9rem;padding:11px 15px}
+  .exp-tab.active::before{display:none}
+  .exp-body{min-height:0;padding:26px 22px}
+  .exp-bullets{grid-template-columns:1fr;gap:11px}
+}
 </style>
 </head>
 <body>
@@ -335,11 +376,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   <div class="wrap nav">
     <a href="#" aria-label="Gymvexa"><img src="assets/logo.svg" alt="Gymvexa" class="logo-img"></a>
     <nav class="nav-links nav-menu" id="navMenu">
-      <a href="#caracteristicas">Características</a>
-      <a href="#como">Cómo funciona</a>
-      <a href="#incluye">Qué incluye</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
+      <a class="nav-tab" data-panel="problema" href="#gymvexa-explorer">Problema real</a>
+      <a class="nav-tab" data-panel="operacion" href="#gymvexa-explorer">Operación automática</a>
+      <a class="nav-tab" data-panel="dinero" href="#gymvexa-explorer">Dinero y caja</a>
+      <a class="nav-tab" data-panel="vistas" href="#gymvexa-explorer">Vistas del sistema</a>
+      <a class="nav-tab" data-panel="seguridad" href="#gymvexa-explorer">Seguridad</a>
     </nav>
     <div class="nav-cta">
       <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
@@ -438,6 +479,97 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <div class="tl" aria-hidden="true"><img src="assets/gym-genesis.webp" alt="" aria-hidden="true"></div>
       <div class="tl" aria-hidden="true"><img src="assets/gym-pk.webp" alt="" aria-hidden="true"></div>
       <div class="tl" aria-hidden="true"><img src="assets/gym-enermfit.webp" alt="" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GYMVEXA EXPLORER -->
+<section class="sec" id="gymvexa-explorer">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" style="justify-content:center">Gymvexa Explorer</div>
+      <h2>Explora cómo Gymvexa <span class="ac">cambia tu operación</span></h2>
+      <p>Cinco ángulos del sistema. Elige uno y mira lo que pasa por dentro.</p>
+    </div>
+    <div class="explorer">
+      <div class="exp-tabs" role="tablist">
+        <button class="exp-tab active" data-panel="problema">Problema real</button>
+        <button class="exp-tab" data-panel="operacion">Operación automática</button>
+        <button class="exp-tab" data-panel="dinero">Dinero y caja</button>
+        <button class="exp-tab" data-panel="vistas">Vistas del sistema</button>
+        <button class="exp-tab" data-panel="seguridad">Seguridad</button>
+      </div>
+      <div class="exp-body">
+        <div class="exp-panel active" id="panel-problema">
+          <h3 class="exp-title">Los gimnasios no pierden control por falta de clientes. Lo pierden por <span class="gw">operar a ciegas</span>.</h3>
+          <p class="rt">Muchos gimnasios locales siguen dependiendo de la <span class="mw">libreta</span>, WhatsApp, <span class="mw">efectivo</span>, recepción y memoria del dueño. El problema no es cobrar en efectivo; el problema es que cada pago, adeudo, acceso o <span class="mw">producto vendido</span> queda suelto, sin <span class="gw">historial</span> y sin <span class="gw">evidencia</span>.</p>
+          <div class="exp-lead">Gymvexa convierte esa operación informal en un sistema ordenado: cada <span class="gw">socio</span>, <span class="gw">pago</span>, <span class="gw">compra</span>, <span class="gw">fiado</span>, <span class="gw">recarga</span> y <span class="gw">acceso</span> queda <span class="gw">registrado</span>.</div>
+          <ul class="exp-bullets">
+            <li>Pagos que antes quedaban en libreta.</li>
+            <li>Fiados que antes se olvidaban.</li>
+            <li>Productos que salían sin registro.</li>
+            <li>Socios vencidos que seguían entrando.</li>
+            <li>Caja difícil de cuadrar.</li>
+            <li>Dueño resolviendo todo por WhatsApp.</li>
+          </ul>
+          <div class="exp-close">De la libreta al <span class="gw">control total</span>.</div>
+        </div>
+        <div class="exp-panel" id="panel-operacion">
+          <h3 class="exp-title">El gimnasio sigue operando <span class="gw">aunque tú no estés</span>.</h3>
+          <p class="rt">Gymvexa permite que tus socios se <span class="mw">registren</span>, <span class="mw">renueven</span>, <span class="mw">compren</span> productos, recarguen saldo o consulten su perfil desde la <span class="gw">tablet</span> del mostrador o desde la <span class="gw">app de miembros</span>.</p>
+          <div class="exp-lead">El dueño ya no tiene que estar presente para cada renovación, compra o acceso. El sistema valida, registra y actualiza todo en <span class="gw">tiempo real</span>.</div>
+          <ul class="exp-bullets">
+            <li>Un socio renueva su mensualidad desde la tablet.</li>
+            <li>Un cliente compra agua o proteína y la paga con <span class="gw">monedero</span>.</li>
+            <li>Un nuevo usuario se registra desde el QR.</li>
+            <li>Un socio vencido intenta entrar y el sistema lo bloquea.</li>
+            <li>Recepción vende, pero no perdona deudas ni cambia precios sin permiso.</li>
+          </ul>
+          <div class="exp-close">Menos dependencia de recepción. <span class="gw">Más operación automática</span>.</div>
+        </div>
+        <div class="exp-panel" id="panel-dinero">
+          <h3 class="exp-title">El dinero no se pierde: <span class="gw">cada movimiento deja rastro</span>.</h3>
+          <p class="rt">Gymvexa está pensado para gimnasios que cobran en <span class="mw">efectivo</span>, transferencia, OXXO, tarjeta, <span class="mw">monedero</span> o incluso <span class="mw">fiado</span>. Todo se registra como movimiento: recargas, compras, pagos, deudas, ajustes y cancelaciones.</p>
+          <div class="exp-lead">El saldo y la deuda no se editan a mano. Se calculan sumando <span class="gw">movimientos</span>, como un <span class="gw">estado de cuenta</span>. Si hay correcciones, se agregan nuevos movimientos, no se borran los anteriores.</div>
+          <ul class="exp-bullets">
+            <li>Efectivo registrado en caja.</li>
+            <li>Monedero digital por socio.</li>
+            <li>Fiado con límite.</li>
+            <li>Cierre de caja por turno.</li>
+            <li>Diferencia esperada vs. dinero contado.</li>
+            <li>Historial completo por socio.</li>
+          </ul>
+          <div class="exp-close">Caja clara. Adeudos visibles. <span class="gw">Movimientos auditables</span>.</div>
+        </div>
+        <div class="exp-panel" id="panel-vistas">
+          <h3 class="exp-title">Cada persona ve <span class="gw">solo lo que necesita</span>.</h3>
+          <p class="rt">Gymvexa no es una sola pantalla. Está dividido en vistas para que el dueño, recepción, el cliente en mostrador y el socio desde su celular tengan una experiencia diferente.</p>
+          <ol class="exp-views">
+            <li><b>Panel del dueño</b><span>Administra socios, planes, pagos, productos, personal, caja, inventario y reportes.</span></li>
+            <li><b>Panel de clientes</b><span>Vista para la tablet del mostrador. Permite comprar, fiar, renovar, inscribirse y escanear el QR de la app de miembros.</span></li>
+            <li><b>App de miembros PWA</b><span>El socio entra desde su celular, busca su perfil, usa su PIN y puede renovar, comprar, ver contenido o recibir notificaciones.</span></li>
+            <li><b>Panel maestro</b><span>Vista interna para controlar qué gimnasios usan Gymvexa y quién está al corriente con la suscripción.</span></li>
+          </ol>
+          <div class="exp-lead">No todos necesitan ver lo mismo. Gymvexa separa la operación para que cada usuario tenga el <span class="gw">acceso correcto</span>.</div>
+          <div class="exp-close">Dueño, recepción, mostrador y socio: <span class="gw">todo conectado</span>.</div>
+        </div>
+        <div class="exp-panel" id="panel-seguridad">
+          <h3 class="exp-title">Control sin <span class="gw">confianza ciega</span>.</h3>
+          <p class="rt">Gymvexa registra quién hizo cada acción importante: quién activó una membresía, quién registró un pago, quién modificó inventario, quién perdonó una deuda y quién cerró caja.</p>
+          <div class="exp-lead">Cada acción sensible debe dejar <span class="gw">evidencia</span>. Eso protege al dueño contra errores, malos manejos y fugas.</div>
+          <ul class="exp-bullets">
+            <li>Roles del personal.</li>
+            <li>Auditoría interna.</li>
+            <li>PIN para perfiles y regreso a zona privada.</li>
+            <li>Bitácora de accesos.</li>
+            <li>Fiado con tope.</li>
+            <li>Cancelaciones con folio.</li>
+            <li>Deuda persistente aunque se cancele la membresía.</li>
+            <li>Historial por socio.</li>
+          </ul>
+          <div class="exp-close">Más control. Menos fugas. <span class="gw">Más evidencia</span>.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -656,6 +788,25 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       if(!isOpen){ item.classList.add('open'); q.setAttribute('aria-expanded','true'); }
     });
   });
+
+  // ===== Gymvexa Explorer =====
+  var explorer=document.querySelector('.explorer');
+  var hashMap={problema:'problema-real',operacion:'operacion-automatica',dinero:'dinero-y-caja',vistas:'vistas-del-sistema',seguridad:'seguridad'};
+  function setPanel(id){
+    document.querySelectorAll('.exp-tab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-panel')===id); });
+    document.querySelectorAll('.exp-panel').forEach(function(pn){ pn.classList.toggle('active', pn.id==='panel-'+id); });
+    document.querySelectorAll('.nav-tab').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-panel')===id); });
+    if(hashMap[id]){ try{ history.replaceState(null,'','#'+hashMap[id]); }catch(e){} }
+  }
+  document.querySelectorAll('.exp-tab').forEach(function(t){ t.addEventListener('click',function(){ setPanel(t.getAttribute('data-panel')); }); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.addEventListener('click',function(e){ e.preventDefault(); setPanel(t.getAttribute('data-panel')); var ex=document.getElementById('gymvexa-explorer'); if(ex){ ex.scrollIntoView({behavior:'smooth',block:'start'}); } if(nm){ nm.classList.remove('open'); } }); });
+  if(explorer){
+    if('IntersectionObserver' in window){
+      var eio=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ explorer.classList.add('lit'); eio.unobserve(en.target); } }); },{threshold:0.18});
+      eio.observe(explorer);
+    } else { explorer.classList.add('lit'); }
+    var h0=location.hash.replace('#',''); for(var k in hashMap){ if(hashMap[k]===h0){ setPanel(k); break; } }
+  }
 })();
 </script>
 <script>
