@@ -391,9 +391,120 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .nv-close{top:80px;left:14px;padding:8px 13px 8px 10px;font-size:.8rem}
   .nv-close span{display:none}
 }
+/* ===== FASE 1 · Problema real ===== */
+#panel-problema .pr-lead-p{max-width:780px}
+.nv-overlay.open #panel-problema.active .pr-compare{animation:childIn .6s .12s ease both}
+.nv-overlay.open #panel-problema.active .pr-sec-h{animation:childIn .55s .04s ease both}
+.nv-overlay.open #panel-problema.active .pr-diagram{animation:childIn .6s .1s ease both}
+.nv-overlay.open #panel-problema.active .pr-problems{animation:childIn .6s .08s ease both}
+.nv-overlay.open #panel-problema.active .pr-dash{animation:childIn .6s .1s ease both}
+.nv-overlay.open #panel-problema.active .pr-close-strong{animation:childIn .6s .12s ease both}
+
+/* Comparativa Antes vs Con Gymvexa */
+.pr-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch;margin:36px 0 6px}
+.pr-col{border-radius:20px;padding:24px 22px;position:relative;overflow:hidden}
+.pr-before{background:linear-gradient(180deg,rgba(22,28,40,.55),rgba(13,17,27,.5));border:1px solid rgba(148,163,184,.14)}
+.pr-after{background:linear-gradient(180deg,rgba(11,32,62,.5),rgba(8,22,42,.5));border:1px solid rgba(56,189,248,.34);box-shadow:0 0 44px rgba(56,189,248,.12),inset 0 0 30px rgba(56,189,248,.04)}
+.pr-after::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%);top:-130px;right:-100px;filter:blur(38px);pointer-events:none}
+.pr-col-h{display:flex;align-items:center;gap:11px;margin-bottom:18px;position:relative;z-index:1;flex-wrap:wrap}
+.pr-badge{font-family:var(--fd);font-weight:800;font-size:.84rem;padding:5px 13px;border-radius:999px}
+.pr-bad{background:rgba(148,163,184,.12);color:#cbd5e1;border:1px solid rgba(148,163,184,.2)}
+.pr-good{background:linear-gradient(135deg,rgba(37,99,235,.32),rgba(56,189,248,.22));color:#fff;border:1px solid rgba(56,189,248,.45)}
+.pr-col-sub{font-size:.82rem;color:var(--muted)}
+.pr-rows{list-style:none;display:flex;flex-direction:column;gap:11px;position:relative;z-index:1}
+.pr-rows li{display:flex;align-items:center;gap:11px;font-size:.95rem;line-height:1.35}
+.pr-before .pr-rows li{color:#94a3b8}
+.pr-after .pr-rows li{color:#e3ebf5}
+.pr-ic{flex:0 0 auto;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.pr-ic svg{width:15px;height:15px}
+.pr-ic-bad{background:rgba(225,29,72,.1);border:1px solid rgba(251,113,133,.22)}
+.pr-ic-good{background:rgba(16,185,129,.12);border:1px solid rgba(52,211,153,.3)}
+.pr-vs{display:flex;align-items:center;justify-content:center}
+.pr-vs span{font-family:var(--fd);font-weight:800;font-size:.78rem;color:var(--cyan-2);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,20,38,.85);border:1px solid rgba(56,189,248,.32);box-shadow:0 0 20px rgba(56,189,248,.18)}
+
+/* Encabezado de sección */
+.pr-sec-h{margin:50px 0 22px}
+.pr-eyebrow{display:block;font-family:var(--fb);font-size:.75rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.pr-h4{font-family:var(--fd);font-weight:800;font-size:clamp(1.3rem,2.2vw,1.7rem);color:#fff;letter-spacing:-.02em;line-height:1.15}
+
+/* Diagrama con líneas */
+.pr-diagram{position:relative;display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:40px;align-items:center;padding:16px 4px}
+.pr-wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.pr-wires path{fill:none;stroke:url(#gwire);stroke-width:1.7;opacity:.5;filter:drop-shadow(0 0 4px rgba(56,189,248,.55));stroke-dasharray:5 8;animation:wireflow 1.1s linear infinite}
+@keyframes wireflow{to{stroke-dashoffset:-13}}
+.pr-inputs{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.pr-chip{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:13px;background:rgba(17,29,51,.74);border:1px solid rgba(148,163,184,.16);font-size:.92rem;font-weight:600;color:#dbe4f0;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .2s,border-color .2s,box-shadow .2s}
+.pr-chip:hover{transform:translateX(4px);border-color:rgba(56,189,248,.4);box-shadow:0 0 22px rgba(56,189,248,.12)}
+.pr-chip-ic{flex:0 0 auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(3,7,18,.5);border:1px solid rgba(148,163,184,.12)}
+.pr-chip-ic svg{width:17px;height:17px}
+.pr-core{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:30px 18px;border-radius:22px;background:linear-gradient(160deg,rgba(37,99,235,.26),rgba(8,22,42,.88));border:1px solid rgba(56,189,248,.5);box-shadow:0 0 50px rgba(56,189,248,.22),inset 0 0 30px rgba(56,189,248,.07);text-align:center}
+.pr-core::before{content:"";position:absolute;inset:-1.5px;border-radius:23px;background:conic-gradient(transparent 0deg,rgba(56,189,248,.6) 45deg,transparent 120deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;animation:prspin 5s linear infinite;pointer-events:none;z-index:0}
+@keyframes prspin{to{transform:rotate(1turn)}}
+.pr-core-badge{width:60px;height:60px;border-radius:17px;display:flex;align-items:center;justify-content:center;background:rgba(3,7,18,.5);border:1px solid rgba(56,189,248,.4);box-shadow:0 0 24px rgba(56,189,248,.25);margin-bottom:4px}
+.pr-core b{font-family:var(--fd);font-weight:800;font-size:1.18rem;color:#fff;position:relative;z-index:1}
+.pr-core>span{font-size:.78rem;color:var(--cyan-2);position:relative;z-index:1}
+.pr-outputs{display:flex;flex-direction:column;gap:13px;position:relative;z-index:1}
+.pr-out{display:flex;align-items:center;gap:11px;padding:13px 15px;border-radius:13px;background:rgba(11,32,62,.5);border:1px solid rgba(56,189,248,.26);font-size:.91rem;font-weight:600;color:#e3ebf5;box-shadow:0 0 22px rgba(56,189,248,.08)}
+.pr-out-ic{flex:0 0 auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(3,7,18,.4);border:1px solid rgba(56,189,248,.2)}
+.pr-out-ic svg{width:17px;height:17px}
+.pr-vwire{display:none}
+
+/* Tarjetas de problemas */
+.pr-problems{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.pr-pcard{padding:22px 18px;border-radius:18px;background:linear-gradient(160deg,rgba(17,29,51,.58),rgba(10,16,28,.5));border:1px solid rgba(148,163,184,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform .25s,border-color .25s,box-shadow .25s}
+.pr-pcard:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.42);box-shadow:0 14px 40px rgba(2,6,18,.5),0 0 30px rgba(56,189,248,.14)}
+.pr-pic{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:rgba(3,7,18,.5);border:1px solid rgba(148,163,184,.14);margin-bottom:15px}
+.pr-pic svg{width:24px;height:24px}
+.pr-pcard p{font-family:var(--fd);font-weight:700;font-size:1.02rem;color:#fff;line-height:1.3}
+
+/* Mini dashboard */
+.pr-dash{margin-top:42px;border-radius:22px;background:linear-gradient(160deg,rgba(13,22,40,.92),rgba(8,16,30,.9));border:1px solid rgba(56,189,248,.22);box-shadow:0 0 50px rgba(56,189,248,.1),0 20px 60px rgba(2,6,18,.4);overflow:hidden}
+.pr-dash-top{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid rgba(148,163,184,.1);background:rgba(3,7,18,.3)}
+.pr-dash-title{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:800;font-size:1.05rem;color:#fff}
+.pr-live{width:9px;height:9px;border-radius:50%;background:#34D399;animation:prpulse 1.8s infinite}
+@keyframes prpulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.pr-dash-tag{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pr-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(148,163,184,.08)}
+.pr-stat{display:flex;flex-direction:column;align-items:flex-start;gap:11px;padding:20px 16px;background:rgba(10,18,32,.65)}
+.pr-stat-ic{flex:0 0 auto;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(3,7,18,.5);border:1px solid rgba(148,163,184,.12)}
+.pr-stat-ic svg{width:22px;height:22px}
+.pr-stat-tx{display:flex;flex-direction:column}
+.pr-stat-tx b{font-family:var(--fd);font-weight:800;font-size:1.45rem;color:#fff;line-height:1.05}
+.pr-stat-tx span{font-size:.78rem;color:var(--muted);line-height:1.25;margin-top:2px}
+.pr-stat-ok b{color:#34D399}
+
+/* Cierre fuerte */
+.pr-close-strong{position:relative;margin-top:44px;padding:28px 30px;border-radius:18px;text-align:center;font-family:var(--fd);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.9rem);color:#fff;background:linear-gradient(135deg,rgba(11,32,62,.6),rgba(8,20,38,.5));border:1px solid rgba(56,189,248,.32);box-shadow:0 0 50px rgba(56,189,248,.14);overflow:hidden}
+.pr-close-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 130%,rgba(56,189,248,.24),transparent 60%);pointer-events:none}
+
+@media(max-width:768px){
+  .pr-compare{grid-template-columns:1fr;gap:14px;margin:28px 0 4px}
+  .pr-vs{padding:2px 0}
+  .pr-vs span{width:38px;height:38px}
+  .pr-diagram{grid-template-columns:1fr;gap:0;padding:8px 0}
+  .pr-wires{display:none}
+  .pr-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .pr-core{max-width:260px;margin:0 auto;width:100%}
+  .pr-outputs{gap:11px}
+  .pr-vwire{display:block;width:2px;height:30px;margin:8px auto;border-radius:2px;background:linear-gradient(180deg,rgba(56,189,248,.65),rgba(37,99,235,.08));box-shadow:0 0 10px rgba(56,189,248,.45)}
+  .pr-problems{grid-template-columns:1fr 1fr;gap:12px}
+  .pr-pcard{padding:18px 15px}
+  .pr-stats{grid-template-columns:1fr 1fr}
+  .pr-close-strong{margin-top:36px;padding:24px 20px}
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
+<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#059669"/></linearGradient>
+<linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBBF24"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
+<linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FB7185"/><stop offset="1" stop-color="#E11D48"/></linearGradient>
+<linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#7C3AED"/></linearGradient>
+<linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60A5FA"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
+<linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient>
+<linearGradient id="gwire" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#38BDF8"/></linearGradient>
+</defs></svg>
 <div class="bg"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
 
 <!-- NAV -->
@@ -520,17 +631,82 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <div class="exp-body">
         <div class="exp-panel active" id="panel-problema">
           <h3 class="exp-title">Los gimnasios no pierden control por falta de clientes. Lo pierden por <span class="gw">operar a ciegas</span>.</h3>
-          <p class="rt">Muchos gimnasios locales siguen dependiendo de la <span class="mw">libreta</span>, WhatsApp, <span class="mw">efectivo</span>, recepción y memoria del dueño. El problema no es cobrar en efectivo; el problema es que cada pago, adeudo, acceso o <span class="mw">producto vendido</span> queda suelto, sin <span class="gw">historial</span> y sin <span class="gw">evidencia</span>.</p>
-          <div class="exp-lead">Gymvexa convierte esa operación informal en un sistema ordenado: cada <span class="gw">socio</span>, <span class="gw">pago</span>, <span class="gw">compra</span>, <span class="gw">fiado</span>, <span class="gw">recarga</span> y <span class="gw">acceso</span> queda <span class="gw">registrado</span>.</div>
-          <ul class="exp-bullets">
-            <li>Pagos que antes quedaban en libreta.</li>
-            <li>Fiados que antes se olvidaban.</li>
-            <li>Productos que salían sin registro.</li>
-            <li>Socios vencidos que seguían entrando.</li>
-            <li>Caja difícil de cuadrar.</li>
-            <li>Dueño resolviendo todo por WhatsApp.</li>
-          </ul>
-          <div class="exp-close">De la libreta al <span class="gw">control total</span>.</div>
+          <p class="rt pr-lead-p">El problema no es cobrar en <span class="mw">efectivo</span>. Es que cada pago, <span class="mw">fiado</span>, producto y acceso queda suelto, sin <span class="gw">historial</span> y sin <span class="gw">evidencia</span>. Gymvexa convierte ese caos en <span class="gw">movimientos registrados</span>.</p>
+
+          <div class="pr-compare">
+            <div class="pr-col pr-before">
+              <div class="pr-col-h"><span class="pr-badge pr-bad">Antes</span><span class="pr-col-sub">Operando a ciegas</span></div>
+              <ul class="pr-rows">
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Pagos anotados en libreta</li>
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Fiados olvidados</li>
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Productos sin registro</li>
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Socios vencidos entrando</li>
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Caja difícil de cuadrar</li>
+            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Todo se resuelve por WhatsApp</li>
+              </ul>
+            </div>
+            <div class="pr-vs"><span>VS</span></div>
+            <div class="pr-col pr-after">
+              <div class="pr-col-h"><span class="pr-badge pr-good">Con Gymvexa</span><span class="pr-col-sub">Todo bajo control</span></div>
+              <ul class="pr-rows">
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Pagos con historial</li>
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Fiado visible y con tope</li>
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Productos registrados</li>
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Acceso según membresía</li>
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Cierre de caja por turno</li>
+            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Panel en tiempo real</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">El flujo</span><h4 class="pr-h4">Todo queda <span class="gw">registrado</span></h4></div>
+          <div class="pr-diagram">
+            <svg class="pr-wires" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <div class="pr-inputs">
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="13" height="18" rx="2"/><path d="M9 3v18M12 8h4M12 12h4"/></svg></span><span>Libreta</span></div>
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.4 7.2L4 20l1.3-4.4A8 8 0 1 1 20 11.5z"/></svg></span><span>WhatsApp</span></div>
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gt)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><span>Efectivo</span></div>
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>Fiado</span></div>
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><span>Productos</span></div>
+        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.3 12.7 20 3M17 6l2.5 2.5M14 9l2.5 2.5"/></svg></span><span>Accesos</span></div>
+            </div>
+            <div class="pr-vwire" aria-hidden="true"></div>
+            <div class="pr-core">
+              <div class="pr-core-badge"><img src="assets/icon.svg" alt="" width="34" height="34"></div>
+              <b>Gymvexa</b>
+              <span>Lo registra todo</span>
+            </div>
+            <div class="pr-vwire" aria-hidden="true"></div>
+            <div class="pr-outputs">
+        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6z"/><path d="M14 2v4h5M9 13h6M9 17h6"/></svg></span><span>Movimientos registrados</span></div>
+        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9A9 9 0 1 1 4 14.5"/><path d="M3 4v5h5"/><path d="M12 8v4l3 1.5"/></svg></span><span>Historial por socio</span></div>
+        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 8V6.5A2 2 0 0 1 5 4.5h10"/><path d="M16.5 12.5h.5"/></svg></span><span>Caja clara</span></div>
+            </div>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">Lo que vive el dueño</span><h4 class="pr-h4">Problemas reales, todos los días</h4></div>
+          <div class="pr-problems">
+        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a3 3 0 0 1 5.6 1.2c0 2-3 2.5-3 4M12 17h.01"/></svg></span><p>No sé quién debe</p></div>
+        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6"/><path d="M13.6 10.5a1.8 1.8 0 0 0-1.6-.8c-1 0-1.7.6-1.7 1.3 0 1.8 3.5.9 3.5 2.8 0 .8-.7 1.4-1.8 1.4a2 2 0 0 1-1.6-.8"/></svg></span><p>No sé cuánto entró hoy</p></div>
+        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><p>Se me fue un producto</p></div>
+        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 11.5-4.1"/><path d="M16.5 16.5 21 21M21 16.5 16.5 21"/></svg></span><p>Entró un socio vencido</p></div>
+          </div>
+
+          <div class="pr-dash">
+            <div class="pr-dash-top">
+              <div class="pr-dash-title"><span class="pr-live"></span>Hoy en tu gimnasio</div>
+              <span class="pr-dash-tag">en tiempo real</span>
+            </div>
+            <div class="pr-stats">
+          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17"/><path d="M3 21h17M12.5 12h.01"/></svg></span><div class="pr-stat-tx"><b>18</b><span>accesos registrados</span></div></div>
+          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6"/><path d="M13.6 10.5a1.8 1.8 0 0 0-1.6-.8c-1 0-1.7.6-1.7 1.3 0 1.8 3.5.9 3.5 2.8 0 .8-.7 1.4-1.8 1.4a2 2 0 0 1-1.6-.8"/></svg></span><div class="pr-stat-tx"><b>$2,450</b><span>en pagos hoy</span></div></div>
+          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="pr-stat-tx"><b>3</b><span>fiados activos</span></div></div>
+          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><div class="pr-stat-tx"><b>12</b><span>productos vendidos</span></div></div>
+          <div class="pr-stat pr-stat-ok"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gt)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3 11 15l4.7-5.4"/></svg></span><div class="pr-stat-tx"><b>$0</b><span>diferencia en caja</span></div></div>
+            </div>
+          </div>
+
+          <div class="pr-close-strong"><span class="pr-close-glow"></span>De la libreta al <span class="gw">control total</span>.</div>
         </div>
         <div class="exp-panel" id="panel-operacion">
           <h3 class="exp-title">El gimnasio sigue operando <span class="gw">aunque tú no estés</span>.</h3>
@@ -811,6 +987,25 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   var nvClose=document.getElementById('nvClose');
   var hashMap={problema:'problema-real',operacion:'operacion-automatica',dinero:'dinero-y-caja',vistas:'vistas-del-sistema',seguridad:'seguridad'};
   function nvBody(){ return nvOverlay ? nvOverlay.querySelector('.exp-body') : null; }
+  function drawWires(){
+    var dia=document.querySelector('#panel-problema .pr-diagram'); if(!dia) return;
+    var svg=dia.querySelector('.pr-wires'), core=dia.querySelector('.pr-core');
+    if(!svg||!core) return;
+    if(getComputedStyle(svg).display==='none'){ svg.innerHTML=''; return; }
+    var db=dia.getBoundingClientRect(), cb=core.getBoundingClientRect();
+    if(db.width<2) return;
+    svg.setAttribute('viewBox','0 0 '+db.width+' '+db.height);
+    var cL=cb.left-db.left, cR=cb.right-db.left, cMid=cb.top-db.top+cb.height/2, d='';
+    dia.querySelectorAll('.pr-chip').forEach(function(c){
+      var b=c.getBoundingClientRect(), x1=b.right-db.left, y1=b.top-db.top+b.height/2, mx=(x1+cL)/2;
+      d+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+cMid+' '+cL+' '+cMid+'"/>';
+    });
+    dia.querySelectorAll('.pr-out').forEach(function(o){
+      var b=o.getBoundingClientRect(), x2=b.left-db.left, y2=b.top-db.top+b.height/2, mx=(cR+x2)/2;
+      d+='<path d="M'+cR+' '+cMid+' C'+mx+' '+cMid+' '+mx+' '+y2+' '+x2+' '+y2+'"/>';
+    });
+    svg.innerHTML=d;
+  }
   function setActive(id){
     document.querySelectorAll('.exp-tab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-panel')===id); });
     document.querySelectorAll('.exp-panel').forEach(function(pn){ pn.classList.toggle('active', pn.id==='panel-'+id); });
@@ -823,6 +1018,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
     if(hashMap[id]){ try{ history.replaceState(null,'','#'+hashMap[id]); }catch(e){} }
     if(nm){ nm.classList.remove('open'); }
     if(nvOverlay){ nvOverlay.scrollTop=0; }
+    if(id==='problema'){ requestAnimationFrame(function(){ drawWires(); setTimeout(drawWires,120); setTimeout(drawWires,680); }); }
   }
   function closeNarrative(){
     if(nvOverlay){ nvOverlay.classList.remove('open'); nvOverlay.setAttribute('aria-hidden','true'); }
@@ -836,6 +1032,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   if(nvClose){ nvClose.addEventListener('click',closeNarrative); }
   if(nvOverlay){ nvOverlay.addEventListener('click',function(e){ if(e.target===nvOverlay){ closeNarrative(); } }); }
   document.addEventListener('keydown',function(e){ if((e.key==='Escape'||e.keyCode===27)&&nvOverlay&&nvOverlay.classList.contains('open')){ closeNarrative(); } });
+  var rwt; window.addEventListener('resize',function(){ clearTimeout(rwt); rwt=setTimeout(function(){ var pp=document.getElementById('panel-problema'); if(nvOverlay&&nvOverlay.classList.contains('open')&&pp&&pp.classList.contains('active')){ drawWires(); } },150); });
   (function(){ var h=location.hash.replace('#',''); for(var k in hashMap){ if(hashMap[k]===h){ openNarrative(k); break; } } })();
 })();
 </script>
