@@ -586,6 +586,21 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .nx-quote p{font-size:1.06rem}
   .nx-cap{padding:0 18px}
 }
+/* ===== Reseñas: muro con scroll vertical infinito (efecto Jerome) ===== */
+.rev-marquee{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+.rev-marquee>.shot-card{flex:0 1 340px}
+.rev-marquee.is-marquee{display:grid;gap:24px;height:clamp(560px,72vh,760px);overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.rev-marquee.cols-3{grid-template-columns:repeat(3,1fr)}
+.rev-marquee.cols-2{grid-template-columns:repeat(2,1fr)}
+.rev-marquee.cols-1{grid-template-columns:1fr;height:clamp(520px,82vh,640px);max-width:430px;margin:0 auto}
+.rev-col{overflow:hidden}
+.rev-track{display:block;will-change:transform;animation:revUp linear infinite}
+.rev-col.dir-down .rev-track{animation-name:revDown}
+.rev-track .shot-card{flex:none;width:100%;max-width:none;margin:0 0 24px;display:block}
+@keyframes revUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes revDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.rev-marquee.is-marquee:hover .rev-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.rev-marquee .rev-track{animation:none!important}}
 </style>
 </head>
 <body>
@@ -965,17 +980,17 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       <h2>Dueños reales. Problemas reales. <span class="ac">Control real.</span></h2>
       <p>Gimnasios que ya recuperaron control de caja, accesos, ventas y socios con Gymvexa.</p>
     </div>
-    <div class="tgrid">
-      <figure class="shot-card reveal"><img src="assets/rev-megahulk.webp" alt="Reseña de Megahulk Gym" loading="lazy"></figure>
-      <figure class="shot-card reveal d1"><img src="assets/rev-martin.webp" alt="Reseña de GYM Martin" loading="lazy"></figure>
-      <figure class="shot-card reveal d2"><img src="assets/rev-brothers.webp" alt="Reseña de Brothers Gym" loading="lazy"></figure>
-      <figure class="shot-card reveal d3"><img src="assets/rev-crack.webp" alt="Reseña de Gym Crack" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img src="assets/rev-king.webp" alt="Reseña de The King Gym" loading="lazy"></figure>
-      <figure class="shot-card reveal d1"><img src="assets/rev-activa.webp" alt="Reseña de Activa Club Fitness" loading="lazy"></figure>
-      <figure class="shot-card reveal d2"><img src="assets/rev-yu.webp" alt="Reseña de YU GYM" loading="lazy"></figure>
-      <figure class="shot-card reveal d3"><img src="assets/rev-clubgym.webp" alt="Reseña de Club Gym" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img src="assets/rev-infinity.webp" alt="Reseña de Infinity Pro Gym" loading="lazy"></figure>
-      <figure class="shot-card reveal d1"><img src="assets/rev-enermfit.webp" alt="Reseña de Enermfit Fitness Center" loading="lazy"></figure>
+    <div class="rev-marquee" id="revMarquee" aria-label="Reseñas de gimnasios reales">
+      <figure class="shot-card"><img src="assets/rev-megahulk.webp" alt="Reseña de Megahulk Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-martin.webp" alt="Reseña de GYM Martin" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-brothers.webp" alt="Reseña de Brothers Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-crack.webp" alt="Reseña de Gym Crack" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-king.webp" alt="Reseña de The King Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-activa.webp" alt="Reseña de Activa Club Fitness" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-yu.webp" alt="Reseña de YU GYM" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-clubgym.webp" alt="Reseña de Club Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-infinity.webp" alt="Reseña de Infinity Pro Gym" loading="lazy"></figure>
+      <figure class="shot-card"><img src="assets/rev-enermfit.webp" alt="Reseña de Enermfit Fitness Center" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -1200,6 +1215,32 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
       hero.addEventListener('mouseleave',function(){ win.style.transform=''; });
     }
   }
+})();
+</script>
+<script>
+/* Muro de resenas: columnas verticales con scroll infinito (distribuye 3/2/1 segun ancho) */
+(function(){
+  var mq=document.getElementById('revMarquee'); if(!mq) return;
+  var src=Array.prototype.slice.call(mq.querySelectorAll('.shot-card')); if(!src.length) return;
+  var durations=[40,52,46], current=-1;
+  function colsFor(w){ return w>=980?3:(w>=640?2:1); }
+  function build(n){
+    current=n;
+    mq.classList.remove('cols-1','cols-2','cols-3','is-marquee');
+    while(mq.firstChild) mq.removeChild(mq.firstChild);
+    var tracks=[];
+    for(var i=0;i<n;i++){
+      var col=document.createElement('div'); col.className='rev-col'+(i%2===1?' dir-down':'');
+      var tr=document.createElement('div'); tr.className='rev-track';
+      tr.style.animationDuration=durations[i%durations.length]+'s';
+      col.appendChild(tr); mq.appendChild(col); tracks.push(tr);
+    }
+    src.forEach(function(c,idx){ tracks[idx%n].appendChild(c.cloneNode(true)); });
+    tracks.forEach(function(tr){ tr.insertAdjacentHTML('beforeend', tr.innerHTML); });
+    mq.classList.add('is-marquee','cols-'+n);
+  }
+  build(colsFor(window.innerWidth));
+  var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(function(){ var n=colsFor(window.innerWidth); if(n!==current) build(n); },200); });
 })();
 </script>
 </body>
