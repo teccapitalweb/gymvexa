@@ -518,6 +518,74 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
   .pr-tag{display:none}
   .pr-sec-first{margin-top:30px}
 }
+/* ============ Sistema narrativo premium (paneles 2-5 + rediseno Problema) ============ */
+/* Hero de texto (paneles sin foto de fondo) */
+.nx-hero{max-width:780px;margin-bottom:4px}
+/* Showcase de imagen branded (marco estilo .shot-card del sitio) */
+.nx-shotwrap{margin:clamp(14px,2.2vw,22px) auto 0}
+.nx-wide{width:min(100vw - 36px,1080px);margin-left:50%;transform:translateX(-50%)}
+.nx-mid{width:min(100vw - 36px,860px);margin-left:50%;transform:translateX(-50%)}
+.nx-shot{position:relative;border:1px solid rgba(56,189,248,.22);border-radius:20px;overflow:hidden;background:#070d18;box-shadow:0 0 42px rgba(56,189,248,.1),0 30px 72px rgba(2,6,18,.55);line-height:0}
+.nx-shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.07);pointer-events:none}
+.nx-shot img{display:block;width:100%;height:auto}
+.nx-cap{display:block;text-align:center;color:var(--muted-2);font-size:.85rem;margin:15px auto 0;max-width:640px;line-height:1.5}
+/* Grid de features (iconos cyan monocromaticos) */
+.nx-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.nx-grid.is-3{grid-template-columns:repeat(3,1fr)}
+.nx-feat{display:flex;gap:15px;align-items:flex-start;padding:21px 20px;border-radius:16px;background:linear-gradient(180deg,rgba(21,32,58,.5),rgba(13,20,36,.5));border:1px solid var(--line);transition:transform .22s,border-color .22s,box-shadow .22s}
+.nx-feat:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.4);box-shadow:0 16px 38px rgba(2,6,18,.45)}
+.nx-ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.24);color:var(--cyan);box-shadow:inset 0 0 12px rgba(56,189,248,.08)}
+.nx-ic svg{width:21px;height:21px}
+.nx-feat b{display:block;font-family:var(--fd);font-weight:700;font-size:1.04rem;color:#fff;margin-bottom:4px;letter-spacing:-.01em}
+.nx-feat span{color:#9aa7bd;font-size:.92rem;line-height:1.5}
+/* Lista editorial (escenarios) */
+.nx-list{display:flex;flex-direction:column;margin-top:2px}
+.nx-li{display:flex;gap:16px;align-items:flex-start;padding:15px 2px;border-bottom:1px solid var(--line)}
+.nx-li:last-child{border-bottom:none}
+.nx-li .nx-mk{flex:0 0 auto;width:22px;height:22px;margin-top:1px;display:grid;place-items:center;color:var(--cyan)}
+.nx-li .nx-mk svg{width:18px;height:18px}
+.nx-li p{color:#c7d1e0;font-size:1.04rem;line-height:1.5}
+.nx-li p b,.nx-li p .gw{color:#fff}
+/* Citas del dueno (primera persona, editorial) */
+.nx-quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.nx-quote{position:relative;padding:26px 24px 22px;border-radius:16px;background:linear-gradient(180deg,rgba(17,26,46,.55),rgba(11,17,30,.5));border:1px solid var(--line);overflow:hidden;transition:transform .22s,border-color .22s}
+.nx-quote:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.32)}
+.nx-quote::before{content:"\201C";position:absolute;top:8px;left:17px;font-family:Georgia,'Times New Roman',serif;font-size:3.4rem;line-height:1;color:rgba(56,189,248,.26)}
+.nx-quote p{position:relative;font-family:var(--fd);font-weight:700;font-size:1.12rem;color:#e9eff7;line-height:1.36;padding-left:34px;letter-spacing:-.01em}
+.nx-quote span{display:block;margin-top:9px;padding-left:34px;font-size:.85rem;color:var(--muted-2);line-height:1.45}
+/* Contraste limpio (antes / con gymvexa) */
+.nx-vs{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:8px}
+.nx-vs-col{padding:clamp(22px,3vw,30px) clamp(20px,2.6vw,28px)}
+.nx-vs-before{background:linear-gradient(180deg,rgba(15,21,33,.45),rgba(11,16,28,.45))}
+.nx-vs-after{background:linear-gradient(180deg,rgba(11,32,62,.4),rgba(8,20,38,.38));border-left:1px solid rgba(56,189,248,.2)}
+.nx-vs-h{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.nx-vs-h .pill{font-family:var(--fd);font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:999px}
+.nx-vs-before .pill{background:rgba(148,163,184,.12);color:#cbd5e1;border:1px solid rgba(148,163,184,.2)}
+.nx-vs-after .pill{background:linear-gradient(135deg,rgba(37,99,235,.3),rgba(56,189,248,.2));color:#fff;border:1px solid rgba(56,189,248,.4)}
+.nx-vs-h .lbl{font-size:.86rem;color:var(--muted)}
+.nx-vs-after .lbl{color:var(--cyan-2)}
+.nx-vs-row{display:flex;gap:12px;align-items:center;padding:8px 0;font-size:.98rem;line-height:1.35}
+.nx-vs-before .nx-vs-row{color:#8b98ad}
+.nx-vs-after .nx-vs-row{color:#dde6f1}
+.nx-vs-row .m{flex:0 0 auto;width:17px;height:17px;display:grid;place-items:center}
+.nx-vs-row .m svg{width:16px;height:16px}
+.nx-vs-before .m{color:#566273}
+.nx-vs-after .m{color:#34D399}
+/* Animaciones de entrada de los nuevos bloques */
+.nv-overlay.open .exp-panel.active .pr-sec-h{animation:childIn .55s .04s ease both}
+.nv-overlay.open .exp-panel.active .nx-shot{animation:childIn .6s .08s ease both}
+.nv-overlay.open .exp-panel.active .nx-grid,.nv-overlay.open .exp-panel.active .nx-list,.nv-overlay.open .exp-panel.active .nx-quotes,.nv-overlay.open .exp-panel.active .nx-vs{animation:childIn .6s .12s ease both}
+/* Mobile */
+@media(max-width:768px){
+  .nx-grid,.nx-grid.is-3,.nx-quotes{grid-template-columns:1fr}
+  .nx-wide,.nx-mid{width:100vw;margin-left:calc(50% - 50vw);transform:none}
+  .nx-shot{border-radius:0;border-left:0;border-right:0}
+  .nx-vs{grid-template-columns:1fr;border-radius:16px}
+  .nx-vs-after{border-left:none;border-top:1px solid rgba(56,189,248,.2)}
+  .nx-feat{padding:18px 16px}
+  .nx-quote p{font-size:1.06rem}
+  .nx-cap{padding:0 18px}
+}
 </style>
 </head>
 <body>
@@ -668,134 +736,139 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
           </div>
 
           <div class="pr-sec-h pr-sec-first"><span class="pr-eyebrow">El contraste</span><h4 class="pr-h4">El mismo gimnasio, <span class="gw">dos realidades</span></h4></div>
-          <div class="pr-compare">
-            <div class="pr-col pr-before">
-              <div class="pr-col-h"><span class="pr-badge pr-bad">Antes</span><span class="pr-col-sub">Operando a ciegas</span></div>
-              <ul class="pr-rows">
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Pagos anotados en libreta</li>
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Fiados olvidados</li>
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Productos sin registro</li>
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Socios vencidos entrando</li>
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Caja difícil de cuadrar</li>
-            <li><span class="pr-ic pr-ic-bad"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Todo se resuelve por WhatsApp</li>
-              </ul>
+          <div class="nx-vs">
+            <div class="nx-vs-col nx-vs-before">
+              <div class="nx-vs-h"><span class="pill">Antes</span><span class="lbl">Operando a ciegas</span></div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Pagos anotados en libreta</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Fiados que se olvidan</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Productos sin registro</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Socios vencidos que entran</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Caja que no cuadra</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>Todo se resuelve por WhatsApp</div>
             </div>
-            <div class="pr-vs"><span>VS</span></div>
-            <div class="pr-col pr-after">
-              <div class="pr-col-h"><span class="pr-badge pr-good">Con Gymvexa</span><span class="pr-col-sub">Todo bajo control</span></div>
-              <ul class="pr-rows">
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Pagos con historial</li>
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Fiado visible y con tope</li>
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Productos registrados</li>
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Acceso según membresía</li>
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Cierre de caja por turno</li>
-            <li><span class="pr-ic pr-ic-good"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Panel en tiempo real</li>
-              </ul>
+            <div class="nx-vs-col nx-vs-after">
+              <div class="nx-vs-h"><span class="pill">Con Gymvexa</span><span class="lbl">Todo bajo control</span></div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Pagos con historial</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Fiado visible y con tope</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Productos registrados</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Acceso según membresía</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Cierre de caja por turno</div>
+              <div class="nx-vs-row"><span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Panel en tiempo real</div>
             </div>
           </div>
 
-          <div class="pr-sec-h"><span class="pr-eyebrow">El flujo</span><h4 class="pr-h4">Todo queda <span class="gw">registrado</span></h4></div>
-          <div class="pr-diagram">
-            <svg class="pr-wires" preserveAspectRatio="none" aria-hidden="true"></svg>
-            <div class="pr-inputs">
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="13" height="18" rx="2"/><path d="M9 3v18M12 8h4M12 12h4"/></svg></span><span>Libreta</span></div>
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.4 7.2L4 20l1.3-4.4A8 8 0 1 1 20 11.5z"/></svg></span><span>WhatsApp</span></div>
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gt)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><span>Efectivo</span></div>
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>Fiado</span></div>
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><span>Productos</span></div>
-        <div class="pr-chip"><span class="pr-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.3 12.7 20 3M17 6l2.5 2.5M14 9l2.5 2.5"/></svg></span><span>Accesos</span></div>
-            </div>
-            <div class="pr-vwire" aria-hidden="true"></div>
-            <div class="pr-core">
-              <div class="pr-core-badge"><img src="assets/icon.svg" alt="" width="34" height="34"></div>
-              <b>Gymvexa</b>
-              <span>Lo registra todo</span>
-            </div>
-            <div class="pr-vwire" aria-hidden="true"></div>
-            <div class="pr-outputs">
-        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6z"/><path d="M14 2v4h5M9 13h6M9 17h6"/></svg></span><span>Movimientos registrados</span></div>
-        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9A9 9 0 1 1 4 14.5"/><path d="M3 4v5h5"/><path d="M12 8v4l3 1.5"/></svg></span><span>Historial por socio</span></div>
-        <div class="pr-out"><span class="pr-out-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 8V6.5A2 2 0 0 1 5 4.5h10"/><path d="M16.5 12.5h.5"/></svg></span><span>Caja clara</span></div>
-            </div>
+          <div class="pr-sec-h"><span class="pr-eyebrow">Lo que vive el dueño</span><h4 class="pr-h4">Frases que escuchamos <span class="gw">todos los días</span></h4></div>
+          <div class="nx-quotes">
+            <div class="nx-quote"><p>No sé quién me debe.</p><span>El fiado vive suelto en una libreta.</span></div>
+            <div class="nx-quote"><p>No sé cuánto entró hoy.</p><span>El efectivo no cuadra al cerrar.</span></div>
+            <div class="nx-quote"><p>Se me fue un producto.</p><span>La venta nunca quedó registrada.</span></div>
+            <div class="nx-quote"><p>Entró un socio vencido.</p><span>Nadie validó su membresía en la puerta.</span></div>
           </div>
 
-          <div class="pr-sec-h"><span class="pr-eyebrow">Lo que vive el dueño</span><h4 class="pr-h4">Problemas reales, todos los días</h4></div>
-          <div class="pr-problems">
-        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a3 3 0 0 1 5.6 1.2c0 2-3 2.5-3 4M12 17h.01"/></svg></span><p>No sé quién debe</p></div>
-        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6"/><path d="M13.6 10.5a1.8 1.8 0 0 0-1.6-.8c-1 0-1.7.6-1.7 1.3 0 1.8 3.5.9 3.5 2.8 0 .8-.7 1.4-1.8 1.4a2 2 0 0 1-1.6-.8"/></svg></span><p>No sé cuánto entró hoy</p></div>
-        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><p>Se me fue un producto</p></div>
-        <div class="pr-pcard"><span class="pr-pic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 11.5-4.1"/><path d="M16.5 16.5 21 21M21 16.5 16.5 21"/></svg></span><p>Entró un socio vencido</p></div>
-          </div>
-
+          <div class="pr-sec-h"><span class="pr-eyebrow">Con Gymvexa</span><h4 class="pr-h4">Tu día, en <span class="gw">una sola pantalla</span></h4></div>
           <div class="pr-dash">
             <div class="pr-dash-top">
               <div class="pr-dash-title"><span class="pr-live"></span>Hoy en tu gimnasio</div>
               <span class="pr-dash-tag">en tiempo real</span>
             </div>
             <div class="pr-stats">
-          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17"/><path d="M3 21h17M12.5 12h.01"/></svg></span><div class="pr-stat-tx"><b>18</b><span>accesos registrados</span></div></div>
-          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6"/><path d="M13.6 10.5a1.8 1.8 0 0 0-1.6-.8c-1 0-1.7.6-1.7 1.3 0 1.8 3.5.9 3.5 2.8 0 .8-.7 1.4-1.8 1.4a2 2 0 0 1-1.6-.8"/></svg></span><div class="pr-stat-tx"><b>$2,450</b><span>en pagos hoy</span></div></div>
-          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ga)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="pr-stat-tx"><b>3</b><span>fiados activos</span></div></div>
-          <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gp)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><div class="pr-stat-tx"><b>12</b><span>productos vendidos</span></div></div>
-          <div class="pr-stat pr-stat-ok"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="url(#gt)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3 11 15l4.7-5.4"/></svg></span><div class="pr-stat-tx"><b>$0</b><span>diferencia en caja</span></div></div>
+              <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17"/><path d="M3 21h17M12.5 12h.01"/></svg></span><div class="pr-stat-tx"><b>18</b><span>accesos registrados</span></div></div>
+              <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6"/><path d="M13.6 10.5a1.8 1.8 0 0 0-1.6-.8c-1 0-1.7.6-1.7 1.3 0 1.8 3.5.9 3.5 2.8 0 .8-.7 1.4-1.8 1.4a2 2 0 0 1-1.6-.8"/></svg></span><div class="pr-stat-tx"><b>$2,450</b><span>en pagos hoy</span></div></div>
+              <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="pr-stat-tx"><b>3</b><span>fiados activos</span></div></div>
+              <div class="pr-stat"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.6V16a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4"/><path d="M3.3 7 12 12l8.7-5M12 12v10"/></svg></span><div class="pr-stat-tx"><b>12</b><span>productos vendidos</span></div></div>
+              <div class="pr-stat pr-stat-ok"><span class="pr-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3 11 15l4.7-5.4"/></svg></span><div class="pr-stat-tx"><b>$0</b><span>diferencia en caja</span></div></div>
             </div>
           </div>
 
           <div class="pr-close-strong"><span class="pr-close-glow"></span>De la libreta al <span class="gw">control total</span>.</div>
         </div>
         <div class="exp-panel" id="panel-operacion">
-          <h3 class="exp-title">El gimnasio sigue operando <span class="gw">aunque tú no estés</span>.</h3>
-          <p class="rt">Gymvexa permite que tus socios se <span class="mw">registren</span>, <span class="mw">renueven</span>, <span class="mw">compren</span> productos, recarguen saldo o consulten su perfil desde la <span class="gw">tablet</span> del mostrador o desde la <span class="gw">app de miembros</span>.</p>
+          <div class="nx-hero">
+            <h3 class="exp-title">El gimnasio sigue operando <span class="gw">aunque tú no estés</span>.</h3>
+            <p class="rt">Tus socios se <span class="mw">registran</span>, <span class="mw">renuevan</span>, <span class="mw">compran</span> productos, recargan saldo o consultan su perfil desde la <span class="gw">tablet</span> del mostrador o desde la <span class="gw">app de miembros</span>. Sin que tú estés ahí.</p>
+          </div>
+          <div class="nx-shotwrap nx-wide">
+            <figure class="nx-shot"><img src="assets/operacion.webp" alt="Flujo de operación de Gymvexa: registro, renovación, compra, acceso y movimiento guardado" width="1600" height="900" loading="lazy" decoding="async"></figure>
+            <figcaption class="nx-cap">El mostrador y la app de socios trabajan solos: registran, cobran y validan en tiempo real.</figcaption>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">En el mostrador</span><h4 class="pr-h4">Lo que pasa <span class="gw">sin que intervengas</span></h4></div>
+          <div class="nx-list">
+            <div class="nx-li"><span class="nx-mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><p>Un socio <b>renueva su mensualidad</b> desde la tablet, sin hacer fila en recepción.</p></div>
+            <div class="nx-li"><span class="nx-mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><p>Un cliente compra agua o proteína y la paga con su <span class="gw">monedero</span> digital.</p></div>
+            <div class="nx-li"><span class="nx-mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><p>Un nuevo usuario <b>se registra escaneando el QR</b> y queda dado de alta al instante.</p></div>
+            <div class="nx-li"><span class="nx-mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><p>Un socio vencido intenta entrar y el sistema <b>lo bloquea</b> en la puerta.</p></div>
+            <div class="nx-li"><span class="nx-mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><p>Recepción vende, pero <b>no perdona deudas ni cambia precios</b> sin permiso.</p></div>
+          </div>
+
           <div class="exp-lead">El dueño ya no tiene que estar presente para cada renovación, compra o acceso. El sistema valida, registra y actualiza todo en <span class="gw">tiempo real</span>.</div>
-          <ul class="exp-bullets">
-            <li>Un socio renueva su mensualidad desde la tablet.</li>
-            <li>Un cliente compra agua o proteína y la paga con <span class="gw">monedero</span>.</li>
-            <li>Un nuevo usuario se registra desde el QR.</li>
-            <li>Un socio vencido intenta entrar y el sistema lo bloquea.</li>
-            <li>Recepción vende, pero no perdona deudas ni cambia precios sin permiso.</li>
-          </ul>
           <div class="exp-close">Menos dependencia de recepción. <span class="gw">Más operación automática</span>.</div>
         </div>
         <div class="exp-panel" id="panel-dinero">
-          <h3 class="exp-title">El dinero no se pierde: <span class="gw">cada movimiento deja rastro</span>.</h3>
-          <p class="rt">Gymvexa está pensado para gimnasios que cobran en <span class="mw">efectivo</span>, transferencia, OXXO, tarjeta, <span class="mw">monedero</span> o incluso <span class="mw">fiado</span>. Todo se registra como movimiento: recargas, compras, pagos, deudas, ajustes y cancelaciones.</p>
-          <div class="exp-lead">El saldo y la deuda no se editan a mano. Se calculan sumando <span class="gw">movimientos</span>, como un <span class="gw">estado de cuenta</span>. Si hay correcciones, se agregan nuevos movimientos, no se borran los anteriores.</div>
-          <ul class="exp-bullets">
-            <li>Efectivo registrado en caja.</li>
-            <li>Monedero digital por socio.</li>
-            <li>Fiado con límite.</li>
-            <li>Cierre de caja por turno.</li>
-            <li>Diferencia esperada vs. dinero contado.</li>
-            <li>Historial completo por socio.</li>
-          </ul>
+          <div class="nx-hero">
+            <h3 class="exp-title">El dinero no se pierde: <span class="gw">cada movimiento deja rastro</span>.</h3>
+            <p class="rt">Pensado para gimnasios que cobran en <span class="mw">efectivo</span>, transferencia, OXXO, tarjeta, <span class="mw">monedero</span> o incluso <span class="mw">fiado</span>. Recargas, compras, pagos, deudas y ajustes: todo se registra como movimiento.</p>
+          </div>
+          <div class="nx-shotwrap nx-mid">
+            <figure class="nx-shot"><img src="assets/dinero.webp" alt="Panel de control de dinero de Gymvexa con cierre de caja y saldos de fiado" width="935" height="690" loading="lazy" decoding="async"></figure>
+            <figcaption class="nx-cap">Cierre de caja por turno, con la diferencia esperada contra el efectivo realmente contado.</figcaption>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">Todo cuenta como movimiento</span><h4 class="pr-h4">Caja clara, <span class="gw">deuda visible</span></h4></div>
+          <div class="nx-grid is-3">
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><div><b>Efectivo en caja</b><span>Cada pago en efectivo entra al corte del día.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2"/><path d="M3 7v10a2 2 0 0 0 2 2h13a1 1 0 0 0 1-1v-3"/><path d="M22 11h-4a2 2 0 0 0 0 4h4z"/></svg></span><div><b>Monedero digital</b><span>Saldo por socio para comprar sin tarjeta.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/></svg></span><div><b>Fiado con límite</b><span>Deuda controlada y un tope que no se rebasa.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><path d="M9 11h.01M12 11h.01M15 11h.01M9 14h.01M12 14h.01M15 14h.01M9 17h6"/></svg></span><div><b>Cierre por turno</b><span>Corte de caja por cada turno de recepción.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"/><path d="M6 8l6-3 6 3"/><path d="M6 8l-2.5 4.5a2.5 2.5 0 0 0 5 0z"/><path d="M18 8l-2.5 4.5a2.5 2.5 0 0 0 5 0z"/></svg></span><div><b>Esperado vs. contado</b><span>El sistema te dice si falta o sobra dinero.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><div><b>Historial por socio</b><span>Estado de cuenta completo de cada cliente.</span></div></div>
+          </div>
+
+          <div class="exp-lead">El saldo y la deuda no se editan a mano. Se calculan sumando <span class="gw">movimientos</span>, como un <span class="gw">estado de cuenta</span>. Si hay correcciones, se agregan nuevos movimientos; los anteriores nunca se borran.</div>
           <div class="exp-close">Caja clara. Adeudos visibles. <span class="gw">Movimientos auditables</span>.</div>
         </div>
         <div class="exp-panel" id="panel-vistas">
-          <h3 class="exp-title">Cada persona ve <span class="gw">solo lo que necesita</span>.</h3>
-          <p class="rt">Gymvexa no es una sola pantalla. Está dividido en vistas para que el dueño, recepción, el cliente en mostrador y el socio desde su celular tengan una experiencia diferente.</p>
-          <ol class="exp-views">
-            <li><b>Panel del dueño</b><span>Administra socios, planes, pagos, productos, personal, caja, inventario y reportes.</span></li>
-            <li><b>Panel de clientes</b><span>Vista para la tablet del mostrador. Permite comprar, fiar, renovar, inscribirse y escanear el QR de la app de miembros.</span></li>
-            <li><b>App de miembros PWA</b><span>El socio entra desde su celular, busca su perfil, usa su PIN y puede renovar, comprar, ver contenido o recibir notificaciones.</span></li>
-            <li><b>Panel maestro</b><span>Vista interna para controlar qué gimnasios usan Gymvexa y quién está al corriente con la suscripción.</span></li>
-          </ol>
+          <div class="nx-hero">
+            <h3 class="exp-title">Cada persona ve <span class="gw">solo lo que necesita</span>.</h3>
+            <p class="rt">Gymvexa no es una sola pantalla. Está dividido en vistas para que el dueño, recepción, el cliente en mostrador y el socio desde su celular tengan una experiencia distinta.</p>
+          </div>
+          <div class="nx-shotwrap nx-wide">
+            <figure class="nx-shot"><img src="assets/vistas.webp" alt="Las cuatro vistas de Gymvexa: dashboard del dueño, mostrador, app del miembro y panel maestro" width="1600" height="900" loading="lazy" decoding="async"></figure>
+            <figcaption class="nx-cap">Cuatro experiencias conectadas a una sola fuente de verdad.</figcaption>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">Una sola base de datos</span><h4 class="pr-h4">Las <span class="gw">cuatro vistas</span></h4></div>
+          <div class="nx-grid">
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="9" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="12" width="8" height="9" rx="1.5"/><rect x="3" y="16" width="8" height="5" rx="1.5"/></svg></span><div><b>Panel del dueño</b><span>Socios, planes, pagos, productos, personal, caja, inventario y reportes.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><line x1="10" y1="18.5" x2="14" y2="18.5"/></svg></span><div><b>Panel de clientes</b><span>La tablet del mostrador: comprar, fiar, renovar, inscribirse y escanear el QR.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg></span><div><b>App de miembros (PWA)</b><span>El socio entra desde su celular con PIN: renueva, compra y recibe avisos.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><circle cx="15" cy="8" r="2.2"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="16" r="2.2"/></svg></span><div><b>Panel maestro</b><span>Control interno de qué gimnasios usan Gymvexa y quién está al corriente.</span></div></div>
+          </div>
+
           <div class="exp-lead">No todos necesitan ver lo mismo. Gymvexa separa la operación para que cada usuario tenga el <span class="gw">acceso correcto</span>.</div>
           <div class="exp-close">Dueño, recepción, mostrador y socio: <span class="gw">todo conectado</span>.</div>
         </div>
         <div class="exp-panel" id="panel-seguridad">
-          <h3 class="exp-title">Control sin <span class="gw">confianza ciega</span>.</h3>
-          <p class="rt">Gymvexa registra quién hizo cada acción importante: quién activó una membresía, quién registró un pago, quién modificó inventario, quién perdonó una deuda y quién cerró caja.</p>
-          <div class="exp-lead">Cada acción sensible debe dejar <span class="gw">evidencia</span>. Eso protege al dueño contra errores, malos manejos y fugas.</div>
-          <ul class="exp-bullets">
-            <li>Roles del personal.</li>
-            <li>Auditoría interna.</li>
-            <li>PIN para perfiles y regreso a zona privada.</li>
-            <li>Bitácora de accesos.</li>
-            <li>Fiado con tope.</li>
-            <li>Cancelaciones con folio.</li>
-            <li>Deuda persistente aunque se cancele la membresía.</li>
-            <li>Historial por socio.</li>
-          </ul>
+          <div class="nx-hero">
+            <h3 class="exp-title">Control sin <span class="gw">confianza ciega</span>.</h3>
+            <p class="rt">Gymvexa registra quién hizo cada acción importante: quién activó una membresía, registró un pago, modificó inventario, perdonó una deuda o cerró caja.</p>
+          </div>
+          <div class="nx-shotwrap nx-wide">
+            <figure class="nx-shot"><img src="assets/seguridad.webp" alt="Matriz de permisos por rol y bitácora de auditoría de Gymvexa" width="1600" height="900" loading="lazy" decoding="async"></figure>
+            <figcaption class="nx-cap">Matriz de permisos por rol y una bitácora de auditoría que no se puede alterar.</figcaption>
+          </div>
+
+          <div class="pr-sec-h"><span class="pr-eyebrow">Cada acción deja evidencia</span><h4 class="pr-h4">Cómo <span class="gw">te protege</span></h4></div>
+          <div class="nx-grid is-3">
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.4a3 3 0 0 1 0 5.2"/><path d="M18.6 20a5.5 5.5 0 0 0-3-4.9"/></svg></span><div><b>Roles del personal</b><span>Cada quien ve y edita solo lo que le toca.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 13l2 2 4-4.5"/></svg></span><div><b>Auditoría interna</b><span>Quién hizo qué, cuándo y desde dónde.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.3" r="1.2"/></svg></span><div><b>PIN por perfil</b><span>Cada usuario regresa a su zona privada con PIN.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9A9 9 0 1 1 4 14.5"/><path d="M3 4v5h5"/><path d="M12 8v4l3 1.5"/></svg></span><div><b>Bitácora de accesos</b><span>Registro de entradas que no se puede borrar.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 18l3.5-5"/><circle cx="12" cy="18" r="1"/></svg></span><div><b>Fiado con tope</b><span>Cancelaciones con folio y deuda con límite.</span></div></div>
+            <div class="nx-feat"><span class="nx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><line x1="12" y1="9" x2="12" y2="13.5"/><path d="M12 16.5h.01"/></svg></span><div><b>Deuda persistente</b><span>La deuda sigue aunque se cancele la membresía.</span></div></div>
+          </div>
+
+          <div class="exp-lead">Cada acción sensible debe dejar <span class="gw">evidencia</span>. Eso protege al dueño contra errores, malos manejos y fugas de dinero.</div>
           <div class="exp-close">Más control. Menos fugas. <span class="gw">Más evidencia</span>.</div>
         </div>
       </div>
