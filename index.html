@@ -608,7 +608,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(3,7,18,.985) 0%,rgba(3,7,18,.965) 30%,rgba(3,7,18,.87) 47%,rgba(3,7,18,.56) 60%,rgba(3,7,18,.3) 74%,rgba(3,7,18,.12) 100%),linear-gradient(0deg,var(--base) 0%,rgba(3,7,18,.3) 13%,transparent 34%),linear-gradient(180deg,rgba(3,7,18,.64) 0%,transparent 18%)}
 .hero .wrap{position:relative;z-index:2}
 .hero-copy{max-width:640px}
-.hero-copy h1{font-size:clamp(2.4rem,4.7vw,4rem);line-height:1.03;margin-bottom:22px;text-shadow:0 2px 34px rgba(2,6,18,.62)}
+.hero-copy h1{font-size:clamp(2.4rem,4.7vw,4rem);line-height:1.03;margin-bottom:22px;text-shadow:0 2px 34px rgba(2,6,18,.62);text-wrap:balance}
 .hero-copy .sub{text-align:left;max-width:540px;margin:0 0 32px;color:#c6d1e1;text-shadow:0 1px 20px rgba(2,6,18,.55)}
 .hero-copy .hero-actions{justify-content:flex-start;margin-bottom:24px}
 .hero-copy .micro{text-align:left}
@@ -663,13 +663,14 @@ footer{border-top:1px solid var(--line);padding:64px 0 34px;margin-top:40px}
 </header>
 
 <!-- HERO -->
+<!-- MODIFICADO: hero (imagen principal.webp + copy H1 y subtítulo) -->
 <section class="hero">
-  <img class="hero-bg" src="assets/principal.webp" alt="Mostrador de gimnasio con el panel Gymvexa en tablet, la app de socios con QR y registro de accesos en tiempo real" width="1600" height="900" loading="eager" fetchpriority="high">
+  <img class="hero-bg" src="assets/principal.webp" alt="Gimnasio moderno con el panel Gymvexa flotando alrededor de un socio entrenando: check-in en tiempo real, planes activos, ingresos del día, miembros activos, inventario, próximas clases y pagos recurrentes" width="1600" height="900" loading="eager" fetchpriority="high">
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-copy">
-      <h1>El sistema que trabaja<br><span class="grad">aunque tú no estés</span></h1>
-      <p class="sub">Automatiza accesos, socios, cobros, monedero, fiado, caja y productos. Pensado para gimnasios que cobran en efectivo, transferencia, OXXO o tarjeta.</p>
+      <h1>El software que automatiza la operación de tu gimnasio<br><span class="grad">desde un solo panel</span></h1>
+      <p class="sub">Gestiona accesos, socios, membresías, pagos, caja, inventario y ventas con una plataforma diseñada para gimnasios que buscan operar con más orden, control y eficiencia.</p>
       <div class="hero-actions">
         <!-- Apuntar a app.gymvexa.com (el panel) cuando esté listo -->
         <a href="https://wa.me/5212361112213?text=Hola%2C%20quiero%20empezar%20con%20Gymvexa%20para%20mi%20gimnasio" target="_blank" class="btn btn-primary">Comenzar gratis</a>
